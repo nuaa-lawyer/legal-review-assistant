@@ -1,0 +1,22 @@
+# 敏感配置（包含API Key，绝对不要提交到Git）
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ChromaDB 向量数据库文件
+chroma_db/
+
+# 处理后的数据
+data/processed/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
