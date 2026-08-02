@@ -1,0 +1,23 @@
+# ===== 核心依赖（Python 3.14 兼容）=====
+
+# 文档处理
+python-docx>=1.1.0           # 读取Word法规文件
+
+# 向量计算（替代ChromaDB）
+numpy>=1.26.0                # 向量存储和余弦相似度计算
+
+# LLM API调用
+openai>=1.50.0               # 兼容DeepSeek、SiliconFlow等API
+
+# Embedding（使用SiliconFlow云端API，无需本地模型）
+# 如需本地运行: pip install sentence-transformers
+
+# ===== 前端（按需安装）=====
+# streamlit>=1.40.0            # Web界面（如安装失败，可先跳过）
+
+# ===== Agent框架（Phase 2 按需安装）=====
+# langchain>=0.3.0
+# langchain-community>=0.3.0
+
+# ===== 工具 =====
+python-dotenv>=1.0.0         # .env配置文件读取
