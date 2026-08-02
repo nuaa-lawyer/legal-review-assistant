@@ -113,10 +113,6 @@ cp .env.template .env
 # 编辑 .env，填入 DeepSeek API Key 和 SiliconFlow API Key
 ```
 
-| 服务 | 注册地址 | 费用 |
-|------|----------|------|
-| DeepSeek | https://platform.deepseek.com | 新用户送500万tokens |
-| SiliconFlow | https://siliconflow.cn | 每日2000次免费 |
 
 ### 3. 构建法规索引
 
@@ -181,18 +177,7 @@ python src/ui/server.py
 
 ---
 
-## 🎓 面试准备
 
-### 常见问题
-
-**Q: 为什么不用LangChain？**
-> LangChain抽象层太重，增加调试难度。本项目用Python原生实现Agent编排和RAG，更深入理解底层原理。
-
-**Q: 向量检索为什么不用ChromaDB/FAISS？**
-> 2015条条款的规模下，NumPy余弦相似度的响应时间<50ms，足够使用。刻意选择简单方案展示"不过度工程化"的判断力。
-
-**Q: 如何保证不编造法条？**
-> RAG架构强制LLM只能基于检索到的真实法条生成报告。同时，每个风险项都要求引用具体条款编号，方便人工核查。
 
 ### 能力展示矩阵
 
