@@ -24,7 +24,7 @@ def _get_store_paths():
     """获取向量库文件路径"""
     base = os.path.join(
         os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-        "data", "processed"
+        "processed"
     )
     os.makedirs(base, exist_ok=True)
     return {

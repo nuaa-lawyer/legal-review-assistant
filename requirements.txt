@@ -12,8 +12,8 @@ openai>=1.50.0               # 兼容DeepSeek、SiliconFlow等API
 # Embedding（使用SiliconFlow云端API，无需本地模型）
 # 如需本地运行: pip install sentence-transformers
 
-# ===== 前端（按需安装）=====
-# streamlit>=1.40.0            # Web界面（如安装失败，可先跳过）
+# ===== 前端 =====
+streamlit>=1.40.0              # Web界面
 
 # ===== Agent框架（Phase 2 按需安装）=====
 # langchain>=0.3.0
