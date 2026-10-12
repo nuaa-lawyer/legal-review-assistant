@@ -21,7 +21,8 @@ SYSTEM_PROMPT = """你是一名法律检索专家。根据风险分类结果，�
 请以JSON格式输出检索查询列表：
 {"queries": ["查询角度1", "查询角度2", "查询角度3"]}
 
-查询应该从不同角度覆盖风险领域，用语要接近法律条文的表述风格。"""
+查询应该从不同角度覆盖风险领域，用语要接近法律条文的表述风格。
+优先覆盖该产品所属行业的专门监管法规名称，确保检索到行业主依据法条。"""
 
 
 class LegalRetriever:
@@ -59,11 +60,13 @@ class LegalRetriever:
         query_prompt = f"""用户输入: {user_input}
 
 分类结果:
+- 所属行业: {classification.get('industry', '未识别')}
+- 行业专门法规: {', '.join(classification.get('industry_regulations', []))}
 - 数据类型: {', '.join(classification.get('data_types', []))}
 - 处理行为: {', '.join(classification.get('processing_actions', []))}
 - 风险领域: {', '.join(classification.get('risk_areas', []))}
 
-请生成2-3个检索查询。"""
+请生成2-3个检索查询，其中至少一个查询要包含上述行业专门法规名称。"""
 
         response = self.client.chat.completions.create(
             model=LLM_MODEL,
@@ -90,6 +93,13 @@ class LegalRetriever:
 
         if not search_queries:
             search_queries = [user_input]
+
+        # 行业路由：优先用行业专门法规名称检索，强制匹配行业主依据法条
+        industry_regs = classification.get('industry_regulations', [])
+        if isinstance(industry_regs, list):
+            for reg in industry_regs:
+                if reg and str(reg) not in search_queries:
+                    search_queries.insert(0, str(reg))
 
         print(f"  Agent 2: 生成 {len(search_queries)} 个检索查询")
         for q in search_queries:

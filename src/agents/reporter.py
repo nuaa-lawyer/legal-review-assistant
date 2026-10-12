@@ -8,14 +8,16 @@ Agent 3: 报告生成器 (ReportGenerator)
 
 这个Agent只负责"写报告"，不自己做检索或分类。
 """
+from datetime import date
 from openai import OpenAI
 from src.utils.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, LLM_MODEL, LLM_TEMPERATURE
 
-SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信息保护、数据安全、网络安全法律法规。
+SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信息保护、数据安全、网络安全法律法规，以及各行业的专门监管法规。
 
 你的任务是基于已有的风险分类结果和相关法条，生成一份结构化的合规风险报告。
 
 ## 报告格式要求
+报告最顶部必须先用一行标注「审查日期」，该日期必须使用用户消息中提供的系统当前日期，严禁自行编造其他日期。
 
 ### 🔴 高风险项
 使用表格：| 风险点 | 违反法规 | 具体条款 | 风险说明 |
@@ -34,6 +36,12 @@ SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信�
 
 ### ⚠️ 总结
 2-3句话总结核心风险和最重要的改进方向
+
+## 行业路由规则（重要）
+- 先识别产品所属行业，以该行业的专门监管法规作为主要依据（主依据）。
+- 《个人信息保护法》《消费者权益保护法》等通用法只能作为兜底或补充，不得作为唯一依据。
+- 示例：教育类App → 以教育App备案、双减政策、《未成年人网络保护条例》、《互联网信息服务算法推荐管理规定》为主；化妆品 → 以《化妆品监督管理条例》《广告法》为主。
+- 若检索到的法条中缺少行业专门法规，必须在报告中明确指出「该行业专门法规尚未覆盖，建议补充审查」，不得用通用法强行替代。
 
 ## 注意事项
 - 每项风险必须有明确的法规依据
@@ -66,8 +74,11 @@ class ReportGenerator:
             classification: Agent 1 的分类结果
             articles: Agent 2 精选的法条列表
         """
+        today = date.today().strftime("%Y年%m月%d日")
+
         # 格式化分类结果
-        class_text = f"""- 数据类型: {', '.join(classification.get('data_types', []))}
+        class_text = f"""- 所属行业: {classification.get('industry', '未识别')}
+- 数据类型: {', '.join(classification.get('data_types', []))}
 - 处理行为: {', '.join(classification.get('processing_actions', []))}
 - 业务场景: {', '.join(classification.get('scenario_tags', []))}
 - 风险领域: {', '.join(classification.get('risk_areas', []))}
@@ -84,7 +95,10 @@ class ReportGenerator:
             for i, a in enumerate(articles)
         ])
 
-        prompt = f"""## 用户输入的产品功能描述
+        prompt = f"""## 审查日期（必须使用此日期）
+{today}
+
+## 用户输入的产品功能描述
 {user_input}
 
 ## 风险分类结果
