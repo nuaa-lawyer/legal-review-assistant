@@ -15,17 +15,26 @@ import numpy as np
 from src.utils.config import TOP_K_RETRIEVAL
 from src.rag.embedding import get_embeddings
 
-# bge-large-zh-v1.5 最大支持 512 token，中文约 1.5 字符/token
-# 截断到 800 字保留足够语义信息，同时保证不超限
-MAX_CHARS_FOR_EMBEDDING = 800
+# bge-large-zh-v1.5 最大支持 512 token，中文约 1 字符/token
+# 实测 520 字成功、540 字失败；截断到 450 字 + 法条前缀后仍 <512 token
+MAX_CHARS_FOR_EMBEDDING = 450
 
 
 def _get_store_paths():
-    """获取向量库文件路径"""
-    base = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-        "processed"
-    )
+    """获取向量库文件路径（兼容 processed/ 与 data/processed/ 两种目录结构）"""
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    candidates = [
+        os.path.join(project_root, "processed"),
+        os.path.join(project_root, "data", "processed"),
+    ]
+    # 优先返回同时包含 vectors.npy 和 articles.json 的目录
+    for base in candidates:
+        vectors_path = os.path.join(base, "vectors.npy")
+        articles_path = os.path.join(base, "articles.json")
+        if os.path.exists(vectors_path) and os.path.exists(articles_path):
+            return {"vectors": vectors_path, "articles": articles_path}
+    # 兜底：返回 processed/，并确保目录存在（供 build_index 写入）
+    base = candidates[0]
     os.makedirs(base, exist_ok=True)
     return {
         "vectors": os.path.join(base, "vectors.npy"),       # 向量矩阵
@@ -118,10 +127,13 @@ def build_index(articles_json_path: str):
 def _load_index():
     """加载向量索引到内存"""
     paths = _get_store_paths()
-    if not os.path.exists(paths["vectors"]) or not os.path.exists(paths["articles"]):
+    vectors_exists = os.path.exists(paths["vectors"])
+    articles_exists = os.path.exists(paths["articles"])
+    if not vectors_exists or not articles_exists:
         raise RuntimeError(
-            "向量索引未初始化！请先运行:\n"
-            "python main.py --build"
+            "向量索引未初始化！找不到文件：\n"
+            f"  vectors.npy 存在={vectors_exists} -> {paths['vectors']}\n"
+            f"  articles.json 存在={articles_exists} -> {paths['articles']}"
         )
 
     vectors = np.load(paths["vectors"])
@@ -191,10 +203,10 @@ def get_collection_stats() -> dict:
             "vector_dimension": vectors.shape[1],
             "status": "已就绪",
         }
-    except RuntimeError:
-        return {"error": "向量索引未初始化"}
-    except Exception as e:
+    except RuntimeError as e:
         return {"error": str(e)}
+    except Exception as e:
+        return {"error": f"索引加载失败（{type(e).__name__}）：{e}"}
 
 
 if __name__ == "__main__":

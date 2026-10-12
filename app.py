@@ -42,7 +42,7 @@ def main():
             if "error" not in stats:
                 st.success(f"法规库已就绪: {stats['total_articles']} 条条款")
             else:
-                st.warning("法规库未初始化")
+                st.warning(f"法规库加载异常：{stats['error']}")
         except Exception:
             st.warning("数据库状态未知")
 

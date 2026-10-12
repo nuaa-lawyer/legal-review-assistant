@@ -1,0 +1,19 @@
+{
+  "sdk_type": "streamlit",
+  "base_image": "ubuntu22.04-py310",
+  "resource_configuration": "platform/2v-cpu-16g-mem",
+  "environment_variables": [
+    {
+      "name": "DEEPSEEK_API_KEY",
+      "value": ""
+    },
+    {
+      "name": "SILICONFLOW_API_KEY",
+      "value": ""
+    },
+    {
+      "name": "EMBEDDING_MODE",
+      "value": "api"
+    }
+  ]
+}
