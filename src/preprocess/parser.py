@@ -50,13 +50,15 @@ def parse_single_docx(filepath: str) -> list[dict]:
 
         # 检测正文开始（正文以"第"字开头的条款为主）
         # 跳过目录：目录中的章节名后面紧跟的"第X条"不是真正的正文
-        if re.match(r'^第[一二三四五六七八九十百]+章', text):
+        # 注意：字符集必须覆盖「千/零/两」，否则「第一百零一条」「第一千零一条」
+        # 这类条款号会被误判为正文续行，被并入上一条（曾导致民法典漏 342 条）
+        if re.match(r'^第[一二三四五六七八九十百千万零两]+章', text):
             current_chapter = text
             in_body = True
             continue
 
         # 检测条款开始
-        article_match = re.match(r'^第[一二三四五六七八九十百]+条', text)
+        article_match = re.match(r'^第[一二三四五六七八九十百千万零两]+条', text)
         if article_match:
             # 保存上一条
             if current_article_id and current_text_lines:

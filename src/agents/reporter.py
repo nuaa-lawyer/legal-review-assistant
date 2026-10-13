@@ -11,13 +11,21 @@ Agent 3: 报告生成器 (ReportGenerator)
 from datetime import date
 from openai import OpenAI
 from src.utils.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, LLM_MODEL, LLM_TEMPERATURE
+from src.utils.usage import record
 
 SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信息保护、数据安全、网络安全法律法规，以及各行业的专门监管法规。
 
-你的任务是基于已有的风险分类结果和相关法条，生成一份结构化的合规风险报告。
+你的任务是基于已有的风险分类结果和相关法条，生成一份结构化合规风险报告。
+你不是"检索工具"，你输出的是一份可以直接支撑产品决策的审查结论。
 
 ## 报告格式要求
 报告最顶部必须先用一行标注「审查日期」，该日期必须使用用户消息中提供的系统当前日期，严禁自行编造其他日期。
+
+### ⚖️ 合规结论
+必须输出三行：
+- **风险等级**：高 / 中 / 低（与下方风险项一致）
+- **上线建议**：三选一 —— 「可直接上线」/「整改后可上线」/「不建议上线」
+- **结论一句话**：说明最关键的一个原因
 
 ### 🔴 高风险项
 使用表格：| 风险点 | 违反法规 | 具体条款 | 风险说明 |
@@ -28,11 +36,11 @@ SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信�
 ### 🟢 合规项
 列出已符合法规要求的设计点（如有）
 
-### 📝 修改建议
-每条建议包含：
-- 问题描述
-- 改进方案
-- 法规依据
+### 🛠️ 整改清单
+使用表格，按优先级排序：| 优先级 | 整改项 | 具体操作 | 法规依据 |
+- 优先级取值：P0（上线前必须改） / P1（上线后尽快改） / P2（优化项）
+- 「具体操作」必须是可以直接交给产品/研发执行的动宾短语，例如「将实时位置改为模糊距离显示」
+- 每一条整改项都必须对应上面的风险项和法条，不得凭空新增
 
 ### ⚠️ 总结
 2-3句话总结核心风险和最重要的改进方向
@@ -46,9 +54,35 @@ SYSTEM_PROMPT = """你是一名资深法律合规专家，精通中国个人信�
 ## 注意事项
 - 每项风险必须有明确的法规依据
 - 不可编造法条，只能引用提供的条款
+- **禁止用「立法目的」「适用范围」类条款（如第一条、第二条）作为风险依据或整改依据**，
+  这类条款只讲立法目的，不能说明具体行为规范；请改用具体行为条款（例如最小必要对应第六条、
+  单独同意对应第二十九条、告知对应第十七条）
+- 每条风险点引用的条款必须与风险行为语义对应，不得把"沾边"的条款堆上去充数
 - 修改建议要具体可操作
 - 使用Markdown格式
 - 如果某条款不适用当前场景，不要强行引用"""
+
+
+def _fewshot_block() -> str:
+    """
+    读取已被用户采纳的历史审查案例，作为风格与判断口径的参考（人机协同的持续学习环节）。
+    反馈数据缺失时静默跳过，不影响主流程。
+    """
+    try:
+        from src.feedback.fewshots import get_fewshots
+        shots = get_fewshots(limit=3)
+    except Exception:
+        return ""
+    if not shots:
+        return ""
+    parts = []
+    for s in shots:
+        parts.append(
+            f"- 历史场景：{s['input']}\n"
+            f"  已采纳的关键法条：{s.get('articles', '')}\n"
+            f"  已采纳的整改要点：{s.get('advice', '')}"
+        )
+    return "\n## 历史已采纳案例（同类场景的判断口径参考，不要直接抄写）\n" + "\n".join(parts) + "\n"
 
 
 class ReportGenerator:
@@ -106,7 +140,7 @@ class ReportGenerator:
 
 ## 相关法律法规条款
 {articles_text}
-
+{_fewshot_block()}
 请根据以上信息，生成合规审查报告。"""
 
         response = self.client.chat.completions.create(
@@ -121,7 +155,8 @@ class ReportGenerator:
 
         report = response.choices[0].message.content
 
-        # 统计Token用量
+        # 统计Token用量（全局累加器，供成本核算使用）
+        record(response)
         usage = response.usage
         if usage:
             cost = (usage.prompt_tokens + usage.completion_tokens * 2) / 1_000_000

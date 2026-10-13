@@ -194,6 +194,30 @@ def search(query: str, top_k: int = TOP_K_RETRIEVAL) -> list[dict]:
     return results
 
 
+def get_articles_by_keys(pairs: list) -> dict:
+    """
+    按 (法规全名, 条款号) 精确取回条款原文，供"规则 + 语义"混合召回使用。
+
+    返回 {(law_name, article_id): article_record}
+    """
+    if not pairs:
+        return {}
+    _, articles = _load_index()
+    want = {(str(law), str(art)) for law, art in pairs}
+    out = {}
+    for a in articles:
+        key = (a["law_name"], a["article_id"])
+        if key in want:
+            out[key] = {
+                "law_name": a["law_name"],
+                "article_id": a["article_id"],
+                "chapter": a.get("chapter", ""),
+                "text": a["text"],
+                "relevance_score": None,
+            }
+    return out
+
+
 def get_collection_stats() -> dict:
     """获取向量库统计信息"""
     try:

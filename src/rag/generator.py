@@ -10,6 +10,7 @@ from openai import OpenAI
 
 from src.utils.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, LLM_MODEL, LLM_TEMPERATURE
 from src.utils.prompts import COMPLIANCE_REVIEW_PROMPT, FOLLOWUP_PROMPT
+from src.utils.usage import record
 from src.rag.vector_store import search
 
 
@@ -88,6 +89,7 @@ def generate_report(user_input: str) -> str:
     )
 
     report = response.choices[0].message.content
+    record(response)
 
     # 统计Token用量
     usage = response.usage
@@ -144,11 +146,11 @@ def generate_followup(
         max_tokens=4096,
     )
 
+    record(response)
     return response.choices[0].message.content
 
 
-if __name__ == "__main__":
-    # 命令行快速测试
+if __name__ == "__main__":    # 命令行快速测试
     test_input = "我们的社交App允许用户查看附近100米内的其他用户位置信息"
     report = generate_report(test_input)
     print(f"\n{'='*60}")

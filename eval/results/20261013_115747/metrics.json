@@ -1,0 +1,3355 @@
+{
+  "cases": [
+    {
+      "id": "C01",
+      "industry": "社交",
+      "scenario": "位置隐私",
+      "risk_level": "high",
+      "input": "我们的社交App允许用户查看附近100米内的其他用户的实时位置信息",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第六条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第十三条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "行踪轨迹",
+          "位置信息",
+          "敏感个人信息"
+        ],
+        [
+          "单独同意",
+          "单独取得"
+        ],
+        [
+          "最小必要",
+          "最小范围",
+          "超出",
+          "过度收集"
+        ],
+        [
+          "告知",
+          "显著方式"
+        ]
+      ]
+    },
+    {
+      "id": "C02",
+      "industry": "社交",
+      "scenario": "生物识别实名",
+      "risk_level": "high",
+      "input": "用户上传身份证照片和人脸照片后，系统自动进行实名认证并永久保存到数据库中",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十八条"
+        ],
+        [
+          "中华人民共和国反电信网络诈骗法",
+          "第二十一条"
+        ]
+      ],
+      "key_points": [
+        [
+          "生物识别",
+          "人脸"
+        ],
+        [
+          "单独同意"
+        ],
+        [
+          "保存期限",
+          "存储期限",
+          "必要期限",
+          "永久保存"
+        ],
+        [
+          "真实身份信息",
+          "实名"
+        ]
+      ]
+    },
+    {
+      "id": "C03",
+      "industry": "在线教育",
+      "scenario": "未成年人信息",
+      "risk_level": "high",
+      "input": "面向中小学生的在线教育平台，收集学生姓名、年龄、成绩、位置信息，并据此推送个性化学习内容",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第三十一条"
+        ],
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十四条"
+        ],
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十二条"
+        ],
+        [
+          "互联网信息服务算法推荐管理规定",
+          "第十八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "监护人",
+          "父母"
+        ],
+        [
+          "专门的处理规则",
+          "专门的个人信息处理规则"
+        ],
+        [
+          "未成年人模式",
+          "适合未成年人"
+        ],
+        [
+          "沉迷",
+          "时间管理"
+        ]
+      ]
+    },
+    {
+      "id": "C04",
+      "industry": "电商",
+      "scenario": "数据出境",
+      "risk_level": "high",
+      "input": "跨境电商App将中国用户的订单数据和收货地址传输到海外服务器处理",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第三十八条"
+        ],
+        [
+          "数据出境安全评估办法",
+          "第四条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第三十九条"
+        ],
+        [
+          "中华人民共和国数据安全法",
+          "第三十一条"
+        ]
+      ],
+      "key_points": [
+        [
+          "安全评估",
+          "标准合同",
+          "保护认证"
+        ],
+        [
+          "单独同意"
+        ],
+        [
+          "境外接收方"
+        ],
+        [
+          "重要数据"
+        ]
+      ]
+    },
+    {
+      "id": "C05",
+      "industry": "医疗健康",
+      "scenario": "健康数据",
+      "risk_level": "high",
+      "input": "健康管理App收集用户心率、睡眠、步数等健康数据，用于生成健康报告并推送给保险公司",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十八条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十三条"
+        ]
+      ],
+      "key_points": [
+        [
+          "医疗健康",
+          "健康数据"
+        ],
+        [
+          "单独同意"
+        ],
+        [
+          "向第三方提供",
+          "接收方",
+          "提供给"
+        ]
+      ]
+    },
+    {
+      "id": "C06",
+      "industry": "算法",
+      "scenario": "算法推荐",
+      "risk_level": "medium",
+      "input": "我们的内容App首页信息流完全由算法推荐决定，用户无法关闭推荐，也看不到算法说明",
+      "must_hit": [
+        [
+          "互联网信息服务算法推荐管理规定",
+          "第十六条"
+        ],
+        [
+          "互联网信息服务算法推荐管理规定",
+          "第十七条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十四条"
+        ]
+      ],
+      "key_points": [
+        [
+          "显著方式告知",
+          "告知用户"
+        ],
+        [
+          "关闭算法推荐",
+          "便捷的关闭"
+        ],
+        [
+          "用户标签",
+          "删除标签"
+        ],
+        [
+          "自动化决策",
+          "透明度"
+        ]
+      ]
+    },
+    {
+      "id": "C07",
+      "industry": "AI",
+      "scenario": "深度合成换脸",
+      "risk_level": "high",
+      "input": "我们上线了AI换脸模板功能，用户上传自己的人脸照片即可生成明星脸短视频并发布",
+      "must_hit": [
+        [
+          "互联网信息服务深度合成管理规定",
+          "第十四条"
+        ],
+        [
+          "互联网信息服务深度合成管理规定",
+          "第十七条"
+        ],
+        [
+          "互联网信息服务深度合成管理规定",
+          "第十六条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ]
+      ],
+      "key_points": [
+        [
+          "生物识别信息",
+          "人脸"
+        ],
+        [
+          "单独同意",
+          "告知被编辑的个人"
+        ],
+        [
+          "显著标识",
+          "标识"
+        ],
+        [
+          "真实身份信息认证"
+        ]
+      ]
+    },
+    {
+      "id": "C08",
+      "industry": "AI",
+      "scenario": "生成式AI内容标识",
+      "risk_level": "medium",
+      "input": "我们做了一个AI写作助手，用户输入提示词即可生成文章，生成的内容不做任何标识直接展示",
+      "must_hit": [
+        [
+          "生成式人工智能服务管理暂行办法",
+          "第十二条"
+        ],
+        [
+          "互联网信息服务深度合成管理规定",
+          "第十六条"
+        ],
+        [
+          "互联网信息服务深度合成管理规定",
+          "第十七条"
+        ]
+      ],
+      "key_points": [
+        [
+          "标识"
+        ],
+        [
+          "智能写作",
+          "文本的生成"
+        ],
+        [
+          "日志"
+        ]
+      ]
+    },
+    {
+      "id": "C09",
+      "industry": "社交",
+      "scenario": "未成年人推送",
+      "risk_level": "high",
+      "input": "短视频平台向未成年用户推送可能诱导模仿危险行为的内容，且没有家长绑定和青少年模式",
+      "must_hit": [
+        [
+          "互联网信息服务算法推荐管理规定",
+          "第十八条"
+        ],
+        [
+          "未成年人网络保护条例",
+          "第三十一条"
+        ],
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十四条"
+        ]
+      ],
+      "key_points": [
+        [
+          "不得推送",
+          "诱导"
+        ],
+        [
+          "未成年人模式",
+          "青少年"
+        ],
+        [
+          "沉迷",
+          "时间管理"
+        ],
+        [
+          "监护人"
+        ]
+      ]
+    },
+    {
+      "id": "C10",
+      "industry": "电商",
+      "scenario": "精准营销",
+      "risk_level": "medium",
+      "input": "电商App根据用户浏览记录自动生成个性推荐商品清单并通过短信推送促销信息，用户没有拒绝方式",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十四条"
+        ],
+        [
+          "中华人民共和国电子商务法",
+          "第十八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "自动化决策",
+          "个人特征"
+        ],
+        [
+          "不针对其个人特征的选项",
+          "拒绝"
+        ],
+        [
+          "不合理的差别待遇",
+          "差别待遇"
+        ],
+        [
+          "广告"
+        ]
+      ]
+    },
+    {
+      "id": "C11",
+      "industry": "智能硬件",
+      "scenario": "语音采集",
+      "risk_level": "medium",
+      "input": "智能音箱会持续监听环境声音，把录音实时上传到云端服务器进行语义分析以改进唤醒准确率",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第十三条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第十七条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第六条"
+        ]
+      ],
+      "key_points": [
+        [
+          "最小范围",
+          "最小必要",
+          "过度收集"
+        ],
+        [
+          "同意"
+        ],
+        [
+          "告知",
+          "清晰易懂"
+        ],
+        [
+          "录音",
+          "通信内容",
+          "声音"
+        ]
+      ]
+    },
+    {
+      "id": "C12",
+      "industry": "企业服务",
+      "scenario": "简历共享第三方",
+      "risk_level": "high",
+      "input": "招聘App把求职者简历批量提供给合作的第三方猎头公司，未逐一向求职者说明接收方信息",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十三条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第十七条"
+        ]
+      ],
+      "key_points": [
+        [
+          "接收方的名称",
+          "接收方",
+          "第三方"
+        ],
+        [
+          "单独同意"
+        ],
+        [
+          "告知"
+        ]
+      ]
+    },
+    {
+      "id": "C13",
+      "industry": "在线教育",
+      "scenario": "教育App广告",
+      "risk_level": "medium",
+      "input": "在线教育App在课程页面插入与教学无关的商业广告，广告以弹窗形式出现且难以关闭",
+      "must_hit": [
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十四条"
+        ],
+        [
+          "中华人民共和国广告法",
+          "第四十四条"
+        ]
+      ],
+      "key_points": [
+        [
+          "与教学无关",
+          "广告"
+        ],
+        [
+          "一键关闭",
+          "关闭标志"
+        ],
+        [
+          "弹出",
+          "弹窗"
+        ]
+      ]
+    },
+    {
+      "id": "C14",
+      "industry": "医疗健康",
+      "scenario": "医美宣传",
+      "risk_level": "high",
+      "input": "医美机构把客户的术前术后对比照片放在官网上做广告，并宣传本机构手术成功率高达99%",
+      "must_hit": [
+        [
+          "中华人民共和国广告法",
+          "第十六条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "疗效",
+          "治愈率",
+          "有效率",
+          "断言"
+        ],
+        [
+          "单独同意"
+        ],
+        [
+          "肖像",
+          "个人信息",
+          "敏感个人信息"
+        ],
+        [
+          "广告代言",
+          "推荐、证明"
+        ]
+      ]
+    },
+    {
+      "id": "C15",
+      "industry": "化妆品",
+      "scenario": "功效宣称",
+      "risk_level": "medium",
+      "input": "化妆品电商详情页宣称产品三天美白淡斑、全面修复受损肌肤，但未提供任何功效评价资料",
+      "must_hit": [
+        [
+          "化妆品监督管理条例",
+          "第二十二条"
+        ],
+        [
+          "中华人民共和国广告法",
+          "第九条"
+        ]
+      ],
+      "key_points": [
+        [
+          "功效宣称",
+          "科学依据"
+        ],
+        [
+          "功效评价资料",
+          "文献资料"
+        ],
+        [
+          "绝对化用语",
+          "国家级",
+          "最高级",
+          "最佳"
+        ],
+        [
+          "虚假",
+          "不得含有虚假"
+        ]
+      ]
+    },
+    {
+      "id": "C16",
+      "industry": "食品",
+      "scenario": "网络食品平台",
+      "risk_level": "high",
+      "input": "外卖平台允许商家入驻经营餐饮，但没有核验商家食品经营许可证，也没有进行实名登记",
+      "must_hit": [
+        [
+          "中华人民共和国食品安全法",
+          "第六十二条"
+        ],
+        [
+          "中华人民共和国食品安全法",
+          "第一百三十一条"
+        ],
+        [
+          "中华人民共和国电子商务法",
+          "第二十八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "实名登记"
+        ],
+        [
+          "许可证",
+          "审查"
+        ],
+        [
+          "平台经营者",
+          "报送"
+        ],
+        [
+          "制止",
+          "报告"
+        ]
+      ]
+    },
+    {
+      "id": "C17",
+      "industry": "游戏",
+      "scenario": "未成年人打赏",
+      "risk_level": "high",
+      "input": "直播平台未成年人用户可以在没有任何限额的情况下给主播打赏充值，平台没有设置消费上限",
+      "must_hit": [
+        [
+          "未成年人网络保护条例",
+          "第四十四条"
+        ],
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十四条"
+        ]
+      ],
+      "key_points": [
+        [
+          "消费数额",
+          "限额",
+          "打赏"
+        ],
+        [
+          "不同年龄阶段"
+        ],
+        [
+          "与民事行为能力不符",
+          "付费服务"
+        ],
+        [
+          "时间管理",
+          "权限管理",
+          "消费管理"
+        ]
+      ]
+    },
+    {
+      "id": "C18",
+      "industry": "物业",
+      "scenario": "人脸门禁",
+      "risk_level": "high",
+      "input": "小区物业强制住户录入人脸信息才能刷脸进楼，且未提供其他替代通行方式，也未做事前影响评估",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十八条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十九条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第五十五条"
+        ]
+      ],
+      "key_points": [
+        [
+          "生物识别"
+        ],
+        [
+          "单独同意",
+          "强迫",
+          "强制"
+        ],
+        [
+          "影响评估"
+        ],
+        [
+          "替代方式",
+          "拒绝"
+        ]
+      ]
+    },
+    {
+      "id": "C19",
+      "industry": "出行",
+      "scenario": "行程数据共享",
+      "risk_level": "high",
+      "input": "网约车App把用户行程轨迹和常用地址共享给广告联盟用于精准投放，用户协议中没有单独说明该共享",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十三条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第二十四条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第十七条"
+        ]
+      ],
+      "key_points": [
+        [
+          "单独同意"
+        ],
+        [
+          "接收方"
+        ],
+        [
+          "自动化决策",
+          "精准"
+        ],
+        [
+          "行踪轨迹",
+          "敏感个人信息"
+        ]
+      ]
+    },
+    {
+      "id": "C20",
+      "industry": "游戏",
+      "scenario": "防沉迷实名",
+      "risk_level": "medium",
+      "input": "网络游戏平台允许未实名认证的用户直接进入游戏，防沉迷系统只对成年用户生效",
+      "must_hit": [
+        [
+          "中华人民共和国未成年人保护法",
+          "第七十四条"
+        ],
+        [
+          "未成年人网络保护条例",
+          "第三十一条"
+        ],
+        [
+          "中华人民共和国反电信网络诈骗法",
+          "第二十一条"
+        ]
+      ],
+      "key_points": [
+        [
+          "真实身份信息"
+        ],
+        [
+          "沉迷",
+          "时间管理"
+        ],
+        [
+          "不得为未成年人提供相关服务",
+          "不得提供服务"
+        ]
+      ]
+    },
+    {
+      "id": "C21",
+      "industry": "企业服务",
+      "scenario": "数据分类分级",
+      "risk_level": "high",
+      "input": "我们为企业客户提供SaaS服务，客户把员工信息和经营数据都存在我们服务器上，我们还没有做数据分类分级，也没有指定数据安全负责人",
+      "must_hit": [
+        [
+          "中华人民共和国数据安全法",
+          "第二十一条"
+        ],
+        [
+          "中华人民共和国数据安全法",
+          "第二十七条"
+        ]
+      ],
+      "key_points": [
+        [
+          "分类分级"
+        ],
+        [
+          "数据安全负责人",
+          "管理机构"
+        ],
+        [
+          "全流程数据安全管理制度",
+          "管理制度"
+        ],
+        [
+          "等级保护"
+        ]
+      ]
+    },
+    {
+      "id": "C22",
+      "industry": "其他",
+      "scenario": "境外执法请求",
+      "risk_level": "high",
+      "input": "境外监管机构直接要求我们提供存储在中国境内服务器上的用户数据，我们打算直接提供",
+      "must_hit": [
+        [
+          "中华人民共和国数据安全法",
+          "第三十六条"
+        ],
+        [
+          "中华人民共和国数据安全法",
+          "第三十一条"
+        ]
+      ],
+      "key_points": [
+        [
+          "主管机关批准",
+          "批准"
+        ],
+        [
+          "外国司法或者执法机构",
+          "境外"
+        ],
+        [
+          "不得提供",
+          "不得向"
+        ]
+      ]
+    },
+    {
+      "id": "C23",
+      "industry": "电商",
+      "scenario": "评价管理",
+      "risk_level": "medium",
+      "input": "电商平台会自动删除用户的差评，并对给出差评的用户账号进行降权处理",
+      "must_hit": [
+        [
+          "中华人民共和国电子商务法",
+          "第三十九条"
+        ],
+        [
+          "中华人民共和国消费者权益保护法",
+          "第八条"
+        ]
+      ],
+      "key_points": [
+        [
+          "不得删除",
+          "信用评价"
+        ],
+        [
+          "评价途径",
+          "公示"
+        ],
+        [
+          "真实情况",
+          "知情"
+        ]
+      ]
+    },
+    {
+      "id": "C24",
+      "industry": "企业服务",
+      "scenario": "客服录音训练",
+      "risk_level": "medium",
+      "input": "客服系统会全程录音，并把录音内容用于训练我们自己的意图识别模型，用户通话开始时没有告知",
+      "must_hit": [
+        [
+          "中华人民共和国个人信息保护法",
+          "第十三条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第十七条"
+        ],
+        [
+          "中华人民共和国个人信息保护法",
+          "第六条"
+        ]
+      ],
+      "key_points": [
+        [
+          "告知"
+        ],
+        [
+          "同意"
+        ],
+        [
+          "最小范围",
+          "最小必要",
+          "与处理目的直接相关"
+        ],
+        [
+          "通信内容",
+          "录音",
+          "声音"
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "label": "裸大模型（无知识库）",
+      "cases": 24,
+      "core_recall": 0.8333,
+      "avg_recall": 0.7847,
+      "complete_hit_rate": 0.5,
+      "avg_cited": 19.6,
+      "citation_precision": 0.1222,
+      "zero_hallucination_rate": 0.0833,
+      "trusted_rate": 0.0833,
+      "avg_hallucinations": 1.0,
+      "avg_keypoint_coverage": 0.8611,
+      "high_risk_recall": 1.0,
+      "avg_elapsed_s": 12.365,
+      "avg_cost_cny": 0.016,
+      "avg_tokens": 2102.8
+    },
+    "single": {
+      "label": "单流水线 RAG",
+      "cases": 24,
+      "core_recall": 0.7083,
+      "avg_recall": 0.639,
+      "complete_hit_rate": 0.2917,
+      "avg_cited": 7.8,
+      "citation_precision": 0.2467,
+      "zero_hallucination_rate": 0.8333,
+      "trusted_rate": 0.4583,
+      "avg_hallucinations": 0.042,
+      "avg_keypoint_coverage": 0.8681,
+      "high_risk_recall": 1.0,
+      "avg_elapsed_s": 9.2404,
+      "avg_cost_cny": 0.0137,
+      "avg_tokens": 2336.4
+    },
+    "multi": {
+      "label": "多 Agent 协作",
+      "cases": 24,
+      "core_recall": 0.9375,
+      "avg_recall": 0.9167,
+      "complete_hit_rate": 0.75,
+      "avg_cited": 10.7,
+      "citation_precision": 0.2508,
+      "zero_hallucination_rate": 0.5417,
+      "trusted_rate": 0.4583,
+      "avg_hallucinations": 0,
+      "avg_keypoint_coverage": 0.9271,
+      "high_risk_recall": 1.0,
+      "avg_elapsed_s": 14.3517,
+      "avg_cost_cny": 0.0288,
+      "avg_tokens": 7556.5
+    }
+  },
+  "details": {
+    "baseline": [
+      {
+        "id": "C01",
+        "industry": "社交",
+        "scenario": "位置隐私",
+        "core_recall": 1.0,
+        "recall": 0.75,
+        "complete_hit": false,
+        "cited_count": 24,
+        "citation_precision": 0.125,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法13条"
+        ],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第253条"
+        ],
+        "unknown_laws": [
+          "中华人民共和国刑法",
+          "位置信息展示同意书",
+          "信息安全技术 个人信息安全规范",
+          "常见类型移动互联网应用程序必要个人信息范围规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 15.17,
+        "cost_cny": 0.01713,
+        "total_tokens": 2241,
+        "usage": {
+          "prompt_tokens": 133,
+          "completion_tokens": 2108,
+          "total_tokens": 2241,
+          "llm_calls": 1,
+          "cost_cny": 0.01713
+        }
+      },
+      {
+        "id": "C02",
+        "industry": "社交",
+        "scenario": "生物识别实名",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 36,
+        "citation_precision": 0.056,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [
+          "中华人民共和国反电信网络诈骗法21条"
+        ],
+        "hallucinated": [
+          "数据出境安全评估办法第21条",
+          "数据出境安全评估办法第29条",
+          "数据出境安全评估办法第30条",
+          "数据出境安全评估办法第38条",
+          "数据出境安全评估办法第40条",
+          "数据出境安全评估办法第47条",
+          "数据出境安全评估办法第50条",
+          "数据出境安全评估办法第51条",
+          "数据出境安全评估办法第55条",
+          "数据出境安全评估办法第56条"
+        ],
+        "unknown_laws": [
+          "个保法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 13.35,
+        "cost_cny": 0.019522,
+        "total_tokens": 2543,
+        "usage": {
+          "prompt_tokens": 137,
+          "completion_tokens": 2406,
+          "total_tokens": 2543,
+          "llm_calls": 1,
+          "cost_cny": 0.019522
+        }
+      },
+      {
+        "id": "C03",
+        "industry": "在线教育",
+        "scenario": "未成年人信息",
+        "core_recall": 0.5,
+        "recall": 0.25,
+        "complete_hit": false,
+        "cited_count": 28,
+        "citation_precision": 0.036,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法31条"
+        ],
+        "missing": [
+          "中华人民共和国未成年人保护法72条",
+          "中华人民共和国未成年人保护法74条",
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "儿童个人信息保护规则",
+          "儿童个人信息网络保护规定"
+        ],
+        "keypoint_coverage": 0.5,
+        "high_risk_recall": 1,
+        "elapsed": 14.3,
+        "cost_cny": 0.019444,
+        "total_tokens": 2537,
+        "usage": {
+          "prompt_tokens": 142,
+          "completion_tokens": 2395,
+          "total_tokens": 2537,
+          "llm_calls": 1,
+          "cost_cny": 0.019444
+        }
+      },
+      {
+        "id": "C04",
+        "industry": "电商",
+        "scenario": "数据出境",
+        "core_recall": 1.0,
+        "recall": 0.75,
+        "complete_hit": false,
+        "cited_count": 15,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法38条",
+          "中华人民共和国个人信息保护法39条",
+          "数据出境安全评估办法4条"
+        ],
+        "missing": [
+          "中华人民共和国数据安全法31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "个人信息出境标准合同办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 10.05,
+        "cost_cny": 0.013736,
+        "total_tokens": 1816,
+        "usage": {
+          "prompt_tokens": 132,
+          "completion_tokens": 1684,
+          "total_tokens": 1816,
+          "llm_calls": 1,
+          "cost_cny": 0.013736
+        }
+      },
+      {
+        "id": "C05",
+        "industry": "医疗健康",
+        "scenario": "健康数据",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 21,
+        "citation_precision": 0.095,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法28条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "保险法",
+          "移动互联网应用程序信息服务管理规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 10.22,
+        "cost_cny": 0.014298,
+        "total_tokens": 1893,
+        "usage": {
+          "prompt_tokens": 141,
+          "completion_tokens": 1752,
+          "total_tokens": 1893,
+          "llm_calls": 1,
+          "cost_cny": 0.014298
+        }
+      },
+      {
+        "id": "C06",
+        "industry": "算法",
+        "scenario": "算法推荐",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 10,
+        "citation_precision": 0.3,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法24条",
+          "互联网信息服务算法推荐管理规定16条",
+          "互联网信息服务算法推荐管理规定17条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 9.47,
+        "cost_cny": 0.012734,
+        "total_tokens": 1696,
+        "usage": {
+          "prompt_tokens": 139,
+          "completion_tokens": 1557,
+          "total_tokens": 1696,
+          "llm_calls": 1,
+          "cost_cny": 0.012734
+        }
+      },
+      {
+        "id": "C07",
+        "industry": "AI",
+        "scenario": "深度合成换脸",
+        "core_recall": 1.0,
+        "recall": 0.75,
+        "complete_hit": false,
+        "cited_count": 21,
+        "citation_precision": 0.143,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法29条",
+          "互联网信息服务深度合成管理规定14条",
+          "互联网信息服务深度合成管理规定17条"
+        ],
+        "missing": [
+          "互联网信息服务深度合成管理规定16条"
+        ],
+        "hallucinated": [
+          "中华人民共和国反不正当竞争法第57条"
+        ],
+        "unknown_laws": [
+          "中华人民共和国商标法",
+          "中华人民共和国著作权法",
+          "人工智能生成合成内容标识办法",
+          "具有舆论属性或社会动员能力的互联网信息服务安全评估规定",
+          "商标法",
+          "安全评估规定",
+          "著作权法"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 16.6,
+        "cost_cny": 0.022118,
+        "total_tokens": 2869,
+        "usage": {
+          "prompt_tokens": 139,
+          "completion_tokens": 2730,
+          "total_tokens": 2869,
+          "llm_calls": 1,
+          "cost_cny": 0.022118
+        }
+      },
+      {
+        "id": "C08",
+        "industry": "AI",
+        "scenario": "生成式AI内容标识",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 24,
+        "citation_precision": 0.125,
+        "trusted": false,
+        "hits": [
+          "互联网信息服务深度合成管理规定16条",
+          "互联网信息服务深度合成管理规定17条",
+          "生成式人工智能服务管理暂行办法12条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "生成式人工智能服务管理暂行办法第53条"
+        ],
+        "unknown_laws": [
+          "中华人民共和国著作权法",
+          "互联网信息服务管理办法",
+          "人工智能生成合成内容标识办法",
+          "著作权法"
+        ],
+        "keypoint_coverage": 0.333,
+        "high_risk_recall": null,
+        "elapsed": 11.28,
+        "cost_cny": 0.014838,
+        "total_tokens": 1959,
+        "usage": {
+          "prompt_tokens": 139,
+          "completion_tokens": 1820,
+          "total_tokens": 1959,
+          "llm_calls": 1,
+          "cost_cny": 0.014838
+        }
+      },
+      {
+        "id": "C09",
+        "industry": "社交",
+        "scenario": "未成年人推送",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 19,
+        "citation_precision": 0.105,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国未成年人保护法74条",
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "missing": [
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "移动互联网未成年人模式建设指南",
+          "网络信息内容生态治理规定"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 10.33,
+        "cost_cny": 0.012644,
+        "total_tokens": 1684,
+        "usage": {
+          "prompt_tokens": 138,
+          "completion_tokens": 1546,
+          "total_tokens": 1684,
+          "llm_calls": 1,
+          "cost_cny": 0.012644
+        }
+      },
+      {
+        "id": "C10",
+        "industry": "电商",
+        "scenario": "精准营销",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 15,
+        "citation_precision": 0.067,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法24条"
+        ],
+        "missing": [
+          "中华人民共和国电子商务法18条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "通信短信息服务管理规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 11.79,
+        "cost_cny": 0.015272,
+        "total_tokens": 2014,
+        "usage": {
+          "prompt_tokens": 140,
+          "completion_tokens": 1874,
+          "total_tokens": 2014,
+          "llm_calls": 1,
+          "cost_cny": 0.015272
+        }
+      },
+      {
+        "id": "C11",
+        "industry": "智能硬件",
+        "scenario": "语音采集",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 32,
+        "citation_precision": 0.094,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "数据出境安全评估办法第38条",
+          "数据出境安全评估办法第39条"
+        ],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 13.42,
+        "cost_cny": 0.01681,
+        "total_tokens": 2207,
+        "usage": {
+          "prompt_tokens": 141,
+          "completion_tokens": 2066,
+          "total_tokens": 2207,
+          "llm_calls": 1,
+          "cost_cny": 0.01681
+        }
+      },
+      {
+        "id": "C12",
+        "industry": "企业服务",
+        "scenario": "简历共享第三方",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 12,
+        "citation_precision": 0.167,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法17条",
+          "中华人民共和国个人信息保护法23条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第253条"
+        ],
+        "unknown_laws": [
+          "中华人民共和国刑法",
+          "信息安全技术 个人信息安全规范"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 10.25,
+        "cost_cny": 0.012978,
+        "total_tokens": 1728,
+        "usage": {
+          "prompt_tokens": 141,
+          "completion_tokens": 1587,
+          "total_tokens": 1728,
+          "llm_calls": 1,
+          "cost_cny": 0.012978
+        }
+      },
+      {
+        "id": "C13",
+        "industry": "在线教育",
+        "scenario": "教育App广告",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 17,
+        "citation_precision": 0.118,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国广告法44条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "互联网弹窗信息推送服务管理规定",
+          "关于进一步减轻义务教育阶段学生作业负担和校外培训负担的意见"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 12.15,
+        "cost_cny": 0.0156,
+        "total_tokens": 2055,
+        "usage": {
+          "prompt_tokens": 140,
+          "completion_tokens": 1915,
+          "total_tokens": 2055,
+          "llm_calls": 1,
+          "cost_cny": 0.0156
+        }
+      },
+      {
+        "id": "C14",
+        "industry": "医疗健康",
+        "scenario": "医美宣传",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 15,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国广告法16条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "医疗广告审查证明",
+          "医疗广告管理办法",
+          "患者肖像及个人信息使用授权书"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 15.77,
+        "cost_cny": 0.019892,
+        "total_tokens": 2593,
+        "usage": {
+          "prompt_tokens": 142,
+          "completion_tokens": 2451,
+          "total_tokens": 2593,
+          "llm_calls": 1,
+          "cost_cny": 0.019892
+        }
+      },
+      {
+        "id": "C15",
+        "industry": "化妆品",
+        "scenario": "功效宣称",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 12,
+        "citation_precision": 0.167,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国广告法9条",
+          "化妆品监督管理条例22条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "化妆品分类规则和分类目录",
+          "化妆品功效宣称评价规范",
+          "化妆品标签管理办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 11.27,
+        "cost_cny": 0.014474,
+        "total_tokens": 1915,
+        "usage": {
+          "prompt_tokens": 141,
+          "completion_tokens": 1774,
+          "total_tokens": 1915,
+          "llm_calls": 1,
+          "cost_cny": 0.014474
+        }
+      },
+      {
+        "id": "C16",
+        "industry": "食品",
+        "scenario": "网络食品平台",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 19,
+        "citation_precision": 0.158,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国电子商务法28条",
+          "中华人民共和国食品安全法62条",
+          "中华人民共和国食品安全法131条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "网络餐饮服务食品安全监督管理办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 13.18,
+        "cost_cny": 0.017012,
+        "total_tokens": 2230,
+        "usage": {
+          "prompt_tokens": 138,
+          "completion_tokens": 2092,
+          "total_tokens": 2230,
+          "llm_calls": 1,
+          "cost_cny": 0.017012
+        }
+      },
+      {
+        "id": "C17",
+        "industry": "游戏",
+        "scenario": "未成年人打赏",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 14,
+        "citation_precision": 0.071,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [
+          "未成年人网络保护条例44条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "关于加强网络直播规范管理工作的指导意见",
+          "关于规范网络直播打赏 加强未成年人保护的意见",
+          "网络直播营销管理办法（试行）"
+        ],
+        "keypoint_coverage": 0.5,
+        "high_risk_recall": 1,
+        "elapsed": 13.44,
+        "cost_cny": 0.015602,
+        "total_tokens": 2053,
+        "usage": {
+          "prompt_tokens": 137,
+          "completion_tokens": 1916,
+          "total_tokens": 2053,
+          "llm_calls": 1,
+          "cost_cny": 0.015602
+        }
+      },
+      {
+        "id": "C18",
+        "industry": "物业",
+        "scenario": "人脸门禁",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 20,
+        "citation_precision": 0.15,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国个人信息保护法55条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第253条"
+        ],
+        "unknown_laws": [
+          "人脸信息处理告知同意书",
+          "人脸识别技术应用安全管理办法",
+          "信息安全技术 个人信息安全规范"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 12.0,
+        "cost_cny": 0.015304,
+        "total_tokens": 2021,
+        "usage": {
+          "prompt_tokens": 144,
+          "completion_tokens": 1877,
+          "total_tokens": 2021,
+          "llm_calls": 1,
+          "cost_cny": 0.015304
+        }
+      },
+      {
+        "id": "C19",
+        "industry": "出行",
+        "scenario": "行程数据共享",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 25,
+        "citation_precision": 0.12,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法17条",
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法24条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第253条"
+        ],
+        "unknown_laws": [
+          "App违法违规收集使用个人信息行为认定方法",
+          "个人信息出境标准合同办法",
+          "信息安全技术 个人信息安全规范",
+          "常见类型移动互联网应用程序必要个人信息范围规定",
+          "网络数据安全管理条例"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 15.29,
+        "cost_cny": 0.01984,
+        "total_tokens": 2588,
+        "usage": {
+          "prompt_tokens": 144,
+          "completion_tokens": 2444,
+          "total_tokens": 2588,
+          "llm_calls": 1,
+          "cost_cny": 0.01984
+        }
+      },
+      {
+        "id": "C20",
+        "industry": "游戏",
+        "scenario": "防沉迷实名",
+        "core_recall": 0.5,
+        "recall": 0.333,
+        "complete_hit": false,
+        "cited_count": 21,
+        "citation_precision": 0.048,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [
+          "中华人民共和国反电信网络诈骗法21条",
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "830新规",
+          "关于进一步严格管理切实防止未成年人沉迷网络游戏的通知",
+          "国家新闻出版署关于防止未成年人沉迷网络游戏工作的通知",
+          "移动互联网应用程序信息服务管理规定",
+          "网络游戏管理暂行办法",
+          "防沉迷通知"
+        ],
+        "keypoint_coverage": 0.667,
+        "high_risk_recall": null,
+        "elapsed": 14.25,
+        "cost_cny": 0.0187,
+        "total_tokens": 2441,
+        "usage": {
+          "prompt_tokens": 138,
+          "completion_tokens": 2303,
+          "total_tokens": 2441,
+          "llm_calls": 1,
+          "cost_cny": 0.0187
+        }
+      },
+      {
+        "id": "C21",
+        "industry": "企业服务",
+        "scenario": "数据分类分级",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 18,
+        "citation_precision": 0.111,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国数据安全法21条",
+          "中华人民共和国数据安全法27条"
+        ],
+        "missing": [],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第253条"
+        ],
+        "unknown_laws": [
+          "关键信息基础设施安全保护条例",
+          "数据安全技术 数据分类分级规则"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 11.16,
+        "cost_cny": 0.015362,
+        "total_tokens": 2032,
+        "usage": {
+          "prompt_tokens": 149,
+          "completion_tokens": 1883,
+          "total_tokens": 2032,
+          "llm_calls": 1,
+          "cost_cny": 0.015362
+        }
+      },
+      {
+        "id": "C22",
+        "industry": "其他",
+        "scenario": "境外执法请求",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 18,
+        "citation_precision": 0.056,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国数据安全法36条"
+        ],
+        "missing": [
+          "中华人民共和国数据安全法31条"
+        ],
+        "hallucinated": [
+          "中华人民共和国个人信息保护法第111条",
+          "中华人民共和国个人信息保护法第253条",
+          "数据出境安全评估办法第77条",
+          "数据出境安全评估办法第111条",
+          "数据出境安全评估办法第253条"
+        ],
+        "unknown_laws": [
+          "中华人民共和国刑法",
+          "中华人民共和国国家安全法",
+          "中央企业合规管理办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 10.36,
+        "cost_cny": 0.013074,
+        "total_tokens": 1737,
+        "usage": {
+          "prompt_tokens": 137,
+          "completion_tokens": 1600,
+          "total_tokens": 1737,
+          "llm_calls": 1,
+          "cost_cny": 0.013074
+        }
+      },
+      {
+        "id": "C23",
+        "industry": "电商",
+        "scenario": "评价管理",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 14,
+        "citation_precision": 0.071,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国电子商务法39条"
+        ],
+        "missing": [
+          "中华人民共和国消费者权益保护法8条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "网络交易监督管理办法"
+        ],
+        "keypoint_coverage": 0.667,
+        "high_risk_recall": null,
+        "elapsed": 11.18,
+        "cost_cny": 0.01368,
+        "total_tokens": 1812,
+        "usage": {
+          "prompt_tokens": 136,
+          "completion_tokens": 1676,
+          "total_tokens": 1812,
+          "llm_calls": 1,
+          "cost_cny": 0.01368
+        }
+      },
+      {
+        "id": "C24",
+        "industry": "企业服务",
+        "scenario": "客服录音训练",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 20,
+        "citation_precision": 0.15,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 10.48,
+        "cost_cny": 0.013592,
+        "total_tokens": 1804,
+        "usage": {
+          "prompt_tokens": 140,
+          "completion_tokens": 1664,
+          "total_tokens": 1804,
+          "llm_calls": 1,
+          "cost_cny": 0.013592
+        }
+      }
+    ],
+    "single": [
+      {
+        "id": "C01",
+        "industry": "社交",
+        "scenario": "位置隐私",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 7,
+        "citation_precision": 0.286,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 9.87,
+        "cost_cny": 0.013226,
+        "total_tokens": 2254,
+        "usage": {
+          "prompt_tokens": 801,
+          "completion_tokens": 1453,
+          "total_tokens": 2254,
+          "llm_calls": 1,
+          "cost_cny": 0.013226
+        }
+      },
+      {
+        "id": "C02",
+        "industry": "社交",
+        "scenario": "生物识别实名",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 12,
+        "citation_precision": 0.167,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [
+          "中华人民共和国反电信网络诈骗法21条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 9.38,
+        "cost_cny": 0.013964,
+        "total_tokens": 2335,
+        "usage": {
+          "prompt_tokens": 786,
+          "completion_tokens": 1549,
+          "total_tokens": 2335,
+          "llm_calls": 1,
+          "cost_cny": 0.013964
+        }
+      },
+      {
+        "id": "C03",
+        "industry": "在线教育",
+        "scenario": "未成年人信息",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 11,
+        "citation_precision": 0.182,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法31条",
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "missing": [
+          "中华人民共和国未成年人保护法72条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "儿童个人信息处理规则",
+          "儿童个人信息网络保护规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 11.35,
+        "cost_cny": 0.015882,
+        "total_tokens": 2619,
+        "usage": {
+          "prompt_tokens": 845,
+          "completion_tokens": 1774,
+          "total_tokens": 2619,
+          "llm_calls": 1,
+          "cost_cny": 0.015882
+        }
+      },
+      {
+        "id": "C04",
+        "industry": "电商",
+        "scenario": "数据出境",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 9,
+        "citation_precision": 0.444,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法38条",
+          "中华人民共和国个人信息保护法39条",
+          "中华人民共和国数据安全法31条",
+          "数据出境安全评估办法4条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 9.22,
+        "cost_cny": 0.013558,
+        "total_tokens": 2312,
+        "usage": {
+          "prompt_tokens": 823,
+          "completion_tokens": 1489,
+          "total_tokens": 2312,
+          "llm_calls": 1,
+          "cost_cny": 0.013558
+        }
+      },
+      {
+        "id": "C05",
+        "industry": "医疗健康",
+        "scenario": "健康数据",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 19,
+        "citation_precision": 0.158,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 12.03,
+        "cost_cny": 0.017466,
+        "total_tokens": 2802,
+        "usage": {
+          "prompt_tokens": 825,
+          "completion_tokens": 1977,
+          "total_tokens": 2802,
+          "llm_calls": 1,
+          "cost_cny": 0.017466
+        }
+      },
+      {
+        "id": "C06",
+        "industry": "算法",
+        "scenario": "算法推荐",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 4,
+        "citation_precision": 0.5,
+        "trusted": true,
+        "hits": [
+          "互联网信息服务算法推荐管理规定16条",
+          "互联网信息服务算法推荐管理规定17条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法24条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 7.85,
+        "cost_cny": 0.012074,
+        "total_tokens": 2119,
+        "usage": {
+          "prompt_tokens": 813,
+          "completion_tokens": 1306,
+          "total_tokens": 2119,
+          "llm_calls": 1,
+          "cost_cny": 0.012074
+        }
+      },
+      {
+        "id": "C07",
+        "industry": "AI",
+        "scenario": "深度合成换脸",
+        "core_recall": 1.0,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 5,
+        "citation_precision": 0.4,
+        "trusted": true,
+        "hits": [
+          "互联网信息服务深度合成管理规定14条",
+          "互联网信息服务深度合成管理规定17条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法29条",
+          "互联网信息服务深度合成管理规定16条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 9.7,
+        "cost_cny": 0.015194,
+        "total_tokens": 2650,
+        "usage": {
+          "prompt_tokens": 1001,
+          "completion_tokens": 1649,
+          "total_tokens": 2650,
+          "llm_calls": 1,
+          "cost_cny": 0.015194
+        }
+      },
+      {
+        "id": "C08",
+        "industry": "AI",
+        "scenario": "生成式AI内容标识",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 7,
+        "citation_precision": 0.286,
+        "trusted": false,
+        "hits": [
+          "互联网信息服务深度合成管理规定17条",
+          "生成式人工智能服务管理暂行办法12条"
+        ],
+        "missing": [
+          "互联网信息服务深度合成管理规定16条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.333,
+        "high_risk_recall": null,
+        "elapsed": 7.67,
+        "cost_cny": 0.012034,
+        "total_tokens": 2153,
+        "usage": {
+          "prompt_tokens": 865,
+          "completion_tokens": 1288,
+          "total_tokens": 2153,
+          "llm_calls": 1,
+          "cost_cny": 0.012034
+        }
+      },
+      {
+        "id": "C09",
+        "industry": "社交",
+        "scenario": "未成年人推送",
+        "core_recall": 0.5,
+        "recall": 0.333,
+        "complete_hit": false,
+        "cited_count": 6,
+        "citation_precision": 0.167,
+        "trusted": false,
+        "hits": [
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "missing": [
+          "中华人民共和国未成年人保护法74条",
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [
+          "未成年人网络保护条例第67条"
+        ],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 9.42,
+        "cost_cny": 0.0147,
+        "total_tokens": 2481,
+        "usage": {
+          "prompt_tokens": 858,
+          "completion_tokens": 1623,
+          "total_tokens": 2481,
+          "llm_calls": 1,
+          "cost_cny": 0.0147
+        }
+      },
+      {
+        "id": "C10",
+        "industry": "电商",
+        "scenario": "精准营销",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 11,
+        "citation_precision": 0.182,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法24条",
+          "中华人民共和国电子商务法18条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 8.68,
+        "cost_cny": 0.012286,
+        "total_tokens": 2099,
+        "usage": {
+          "prompt_tokens": 751,
+          "completion_tokens": 1348,
+          "total_tokens": 2099,
+          "llm_calls": 1,
+          "cost_cny": 0.012286
+        }
+      },
+      {
+        "id": "C11",
+        "industry": "智能硬件",
+        "scenario": "语音采集",
+        "core_recall": 0.0,
+        "recall": 0.0,
+        "complete_hit": false,
+        "cited_count": 4,
+        "citation_precision": 0.0,
+        "trusted": false,
+        "hits": [],
+        "missing": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 12.08,
+        "cost_cny": 0.016364,
+        "total_tokens": 2671,
+        "usage": {
+          "prompt_tokens": 834,
+          "completion_tokens": 1837,
+          "total_tokens": 2671,
+          "llm_calls": 1,
+          "cost_cny": 0.016364
+        }
+      },
+      {
+        "id": "C12",
+        "industry": "企业服务",
+        "scenario": "简历共享第三方",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 4,
+        "citation_precision": 0.25,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法23条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 8.54,
+        "cost_cny": 0.012662,
+        "total_tokens": 2173,
+        "usage": {
+          "prompt_tokens": 787,
+          "completion_tokens": 1386,
+          "total_tokens": 2173,
+          "llm_calls": 1,
+          "cost_cny": 0.012662
+        }
+      },
+      {
+        "id": "C13",
+        "industry": "在线教育",
+        "scenario": "教育App广告",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 6,
+        "citation_precision": 0.333,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国广告法44条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 8.63,
+        "cost_cny": 0.013038,
+        "total_tokens": 2250,
+        "usage": {
+          "prompt_tokens": 827,
+          "completion_tokens": 1423,
+          "total_tokens": 2250,
+          "llm_calls": 1,
+          "cost_cny": 0.013038
+        }
+      },
+      {
+        "id": "C14",
+        "industry": "医疗健康",
+        "scenario": "医美宣传",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国广告法16条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法28条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 8.74,
+        "cost_cny": 0.012714,
+        "total_tokens": 2223,
+        "usage": {
+          "prompt_tokens": 845,
+          "completion_tokens": 1378,
+          "total_tokens": 2223,
+          "llm_calls": 1,
+          "cost_cny": 0.012714
+        }
+      },
+      {
+        "id": "C15",
+        "industry": "化妆品",
+        "scenario": "功效宣称",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 5,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "化妆品监督管理条例22条"
+        ],
+        "missing": [
+          "中华人民共和国广告法9条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 7.92,
+        "cost_cny": 0.01216,
+        "total_tokens": 2099,
+        "usage": {
+          "prompt_tokens": 772,
+          "completion_tokens": 1327,
+          "total_tokens": 2099,
+          "llm_calls": 1,
+          "cost_cny": 0.01216
+        }
+      },
+      {
+        "id": "C16",
+        "industry": "食品",
+        "scenario": "网络食品平台",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 4,
+        "citation_precision": 0.5,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国食品安全法62条",
+          "中华人民共和国食品安全法131条"
+        ],
+        "missing": [
+          "中华人民共和国电子商务法28条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 8.02,
+        "cost_cny": 0.01284,
+        "total_tokens": 2454,
+        "usage": {
+          "prompt_tokens": 1132,
+          "completion_tokens": 1322,
+          "total_tokens": 2454,
+          "llm_calls": 1,
+          "cost_cny": 0.01284
+        }
+      },
+      {
+        "id": "C17",
+        "industry": "游戏",
+        "scenario": "未成年人打赏",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 5,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "未成年人网络保护条例44条"
+        ],
+        "missing": [
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 6.97,
+        "cost_cny": 0.011026,
+        "total_tokens": 2039,
+        "usage": {
+          "prompt_tokens": 881,
+          "completion_tokens": 1158,
+          "total_tokens": 2039,
+          "llm_calls": 1,
+          "cost_cny": 0.011026
+        }
+      },
+      {
+        "id": "C18",
+        "industry": "物业",
+        "scenario": "人脸门禁",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 14,
+        "citation_precision": 0.143,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国个人信息保护法55条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法28条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "人脸信息处理告知同意书"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 12.38,
+        "cost_cny": 0.016018,
+        "total_tokens": 2651,
+        "usage": {
+          "prompt_tokens": 865,
+          "completion_tokens": 1786,
+          "total_tokens": 2651,
+          "llm_calls": 1,
+          "cost_cny": 0.016018
+        }
+      },
+      {
+        "id": "C19",
+        "industry": "出行",
+        "scenario": "行程数据共享",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 11,
+        "citation_precision": 0.273,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法17条",
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法24条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 8.88,
+        "cost_cny": 0.014056,
+        "total_tokens": 2357,
+        "usage": {
+          "prompt_tokens": 800,
+          "completion_tokens": 1557,
+          "total_tokens": 2357,
+          "llm_calls": 1,
+          "cost_cny": 0.014056
+        }
+      },
+      {
+        "id": "C20",
+        "industry": "游戏",
+        "scenario": "防沉迷实名",
+        "core_recall": 0.0,
+        "recall": 0.0,
+        "complete_hit": false,
+        "cited_count": 4,
+        "citation_precision": 0.0,
+        "trusted": false,
+        "hits": [],
+        "missing": [
+          "中华人民共和国反电信网络诈骗法21条",
+          "中华人民共和国未成年人保护法74条",
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.667,
+        "high_risk_recall": null,
+        "elapsed": 8.58,
+        "cost_cny": 0.014,
+        "total_tokens": 2365,
+        "usage": {
+          "prompt_tokens": 820,
+          "completion_tokens": 1545,
+          "total_tokens": 2365,
+          "llm_calls": 1,
+          "cost_cny": 0.014
+        }
+      },
+      {
+        "id": "C21",
+        "industry": "企业服务",
+        "scenario": "数据分类分级",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 7,
+        "citation_precision": 0.286,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国数据安全法21条",
+          "中华人民共和国数据安全法27条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "数据安全技术 数据分类分级规则"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 9.13,
+        "cost_cny": 0.013234,
+        "total_tokens": 2243,
+        "usage": {
+          "prompt_tokens": 785,
+          "completion_tokens": 1458,
+          "total_tokens": 2243,
+          "llm_calls": 1,
+          "cost_cny": 0.013234
+        }
+      },
+      {
+        "id": "C22",
+        "industry": "其他",
+        "scenario": "境外执法请求",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 5,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国数据安全法36条"
+        ],
+        "missing": [
+          "中华人民共和国数据安全法31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.667,
+        "high_risk_recall": 1,
+        "elapsed": 7.29,
+        "cost_cny": 0.010916,
+        "total_tokens": 1915,
+        "usage": {
+          "prompt_tokens": 734,
+          "completion_tokens": 1181,
+          "total_tokens": 1915,
+          "llm_calls": 1,
+          "cost_cny": 0.010916
+        }
+      },
+      {
+        "id": "C23",
+        "industry": "电商",
+        "scenario": "评价管理",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 3,
+        "citation_precision": 0.333,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国电子商务法39条"
+        ],
+        "missing": [
+          "中华人民共和国消费者权益保护法8条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.667,
+        "high_risk_recall": null,
+        "elapsed": 9.16,
+        "cost_cny": 0.013682,
+        "total_tokens": 2314,
+        "usage": {
+          "prompt_tokens": 805,
+          "completion_tokens": 1509,
+          "total_tokens": 2314,
+          "llm_calls": 1,
+          "cost_cny": 0.013682
+        }
+      },
+      {
+        "id": "C24",
+        "industry": "企业服务",
+        "scenario": "客服录音训练",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 13,
+        "citation_precision": 0.231,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 10.28,
+        "cost_cny": 0.01453,
+        "total_tokens": 2495,
+        "usage": {
+          "prompt_tokens": 905,
+          "completion_tokens": 1590,
+          "total_tokens": 2495,
+          "llm_calls": 1,
+          "cost_cny": 0.01453
+        }
+      }
+    ],
+    "multi": [
+      {
+        "id": "C01",
+        "industry": "社交",
+        "scenario": "位置隐私",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 13,
+        "citation_precision": 0.308,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "移动互联网应用程序信息服务管理规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.57,
+        "cost_cny": 0.028922,
+        "total_tokens": 7558,
+        "usage": {
+          "prompt_tokens": 5257,
+          "completion_tokens": 2301,
+          "total_tokens": 7558,
+          "llm_calls": 4,
+          "cost_cny": 0.028922
+        }
+      },
+      {
+        "id": "C02",
+        "industry": "社交",
+        "scenario": "生物识别实名",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 14,
+        "citation_precision": 0.214,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国反电信网络诈骗法21条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.81,
+        "cost_cny": 0.030406,
+        "total_tokens": 7979,
+        "usage": {
+          "prompt_tokens": 5571,
+          "completion_tokens": 2408,
+          "total_tokens": 7979,
+          "llm_calls": 4,
+          "cost_cny": 0.030406
+        }
+      },
+      {
+        "id": "C03",
+        "industry": "在线教育",
+        "scenario": "未成年人信息",
+        "core_recall": 1.0,
+        "recall": 0.75,
+        "complete_hit": false,
+        "cited_count": 16,
+        "citation_precision": 0.188,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法31条",
+          "中华人民共和国未成年人保护法72条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "未成年人个人信息处理规则"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 15.01,
+        "cost_cny": 0.0308,
+        "total_tokens": 8146,
+        "usage": {
+          "prompt_tokens": 5728,
+          "completion_tokens": 2418,
+          "total_tokens": 8146,
+          "llm_calls": 4,
+          "cost_cny": 0.0308
+        }
+      },
+      {
+        "id": "C04",
+        "industry": "电商",
+        "scenario": "数据出境",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 8,
+        "citation_precision": 0.5,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法38条",
+          "中华人民共和国个人信息保护法39条",
+          "中华人民共和国数据安全法31条",
+          "数据出境安全评估办法4条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.13,
+        "cost_cny": 0.028726,
+        "total_tokens": 7412,
+        "usage": {
+          "prompt_tokens": 5095,
+          "completion_tokens": 2317,
+          "total_tokens": 7412,
+          "llm_calls": 4,
+          "cost_cny": 0.028726
+        }
+      },
+      {
+        "id": "C05",
+        "industry": "医疗健康",
+        "scenario": "健康数据",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 10,
+        "citation_precision": 0.3,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "健康医疗数据安全指南",
+          "医疗卫生机构网络安全管理办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 13.85,
+        "cost_cny": 0.029482,
+        "total_tokens": 8027,
+        "usage": {
+          "prompt_tokens": 5789,
+          "completion_tokens": 2238,
+          "total_tokens": 8027,
+          "llm_calls": 4,
+          "cost_cny": 0.029482
+        }
+      },
+      {
+        "id": "C06",
+        "industry": "算法",
+        "scenario": "算法推荐",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 11,
+        "citation_precision": 0.273,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法24条",
+          "互联网信息服务算法推荐管理规定16条",
+          "互联网信息服务算法推荐管理规定17条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 12.41,
+        "cost_cny": 0.025356,
+        "total_tokens": 6603,
+        "usage": {
+          "prompt_tokens": 4578,
+          "completion_tokens": 2025,
+          "total_tokens": 6603,
+          "llm_calls": 4,
+          "cost_cny": 0.025356
+        }
+      },
+      {
+        "id": "C07",
+        "industry": "AI",
+        "scenario": "深度合成换脸",
+        "core_recall": 1.0,
+        "recall": 0.75,
+        "complete_hit": false,
+        "cited_count": 13,
+        "citation_precision": 0.231,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法29条",
+          "互联网信息服务深度合成管理规定14条",
+          "互联网信息服务深度合成管理规定17条"
+        ],
+        "missing": [
+          "互联网信息服务深度合成管理规定16条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 16.24,
+        "cost_cny": 0.032222,
+        "total_tokens": 8263,
+        "usage": {
+          "prompt_tokens": 5647,
+          "completion_tokens": 2616,
+          "total_tokens": 8263,
+          "llm_calls": 4,
+          "cost_cny": 0.032222
+        }
+      },
+      {
+        "id": "C08",
+        "industry": "AI",
+        "scenario": "生成式AI内容标识",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 9,
+        "citation_precision": 0.333,
+        "trusted": true,
+        "hits": [
+          "互联网信息服务深度合成管理规定16条",
+          "互联网信息服务深度合成管理规定17条",
+          "生成式人工智能服务管理暂行办法12条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 12.38,
+        "cost_cny": 0.026536,
+        "total_tokens": 7115,
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 2051,
+          "total_tokens": 7115,
+          "llm_calls": 4,
+          "cost_cny": 0.026536
+        }
+      },
+      {
+        "id": "C09",
+        "industry": "社交",
+        "scenario": "未成年人推送",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国未成年人保护法74条",
+          "互联网信息服务算法推荐管理规定18条"
+        ],
+        "missing": [
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "网络短视频内容审核标准细则"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 15.23,
+        "cost_cny": 0.033098,
+        "total_tokens": 8716,
+        "usage": {
+          "prompt_tokens": 6105,
+          "completion_tokens": 2611,
+          "total_tokens": 8716,
+          "llm_calls": 4,
+          "cost_cny": 0.033098
+        }
+      },
+      {
+        "id": "C10",
+        "industry": "电商",
+        "scenario": "精准营销",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国个人信息保护法24条",
+          "中华人民共和国电子商务法18条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.5,
+        "high_risk_recall": null,
+        "elapsed": 13.38,
+        "cost_cny": 0.028254,
+        "total_tokens": 7416,
+        "usage": {
+          "prompt_tokens": 5179,
+          "completion_tokens": 2237,
+          "total_tokens": 7416,
+          "llm_calls": 4,
+          "cost_cny": 0.028254
+        }
+      },
+      {
+        "id": "C11",
+        "industry": "智能硬件",
+        "scenario": "语音采集",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 11,
+        "citation_precision": 0.273,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法6条",
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "信息安全技术 智能音视频采集设备应用安全要求",
+          "具有舆论属性或社会动员能力的互联网信息服务安全评估规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 15.8,
+        "cost_cny": 0.028984,
+        "total_tokens": 7370,
+        "usage": {
+          "prompt_tokens": 4996,
+          "completion_tokens": 2374,
+          "total_tokens": 7370,
+          "llm_calls": 4,
+          "cost_cny": 0.028984
+        }
+      },
+      {
+        "id": "C12",
+        "industry": "企业服务",
+        "scenario": "简历共享第三方",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 6,
+        "citation_precision": 0.333,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法17条",
+          "中华人民共和国个人信息保护法23条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "人力资源市场暂行条例",
+          "网络招聘服务管理规定"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.9,
+        "cost_cny": 0.027306,
+        "total_tokens": 6681,
+        "usage": {
+          "prompt_tokens": 4357,
+          "completion_tokens": 2324,
+          "total_tokens": 6681,
+          "llm_calls": 4,
+          "cost_cny": 0.027306
+        }
+      },
+      {
+        "id": "C13",
+        "industry": "在线教育",
+        "scenario": "教育App广告",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国广告法44条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 15.69,
+        "cost_cny": 0.030688,
+        "total_tokens": 7925,
+        "usage": {
+          "prompt_tokens": 5452,
+          "completion_tokens": 2473,
+          "total_tokens": 7925,
+          "llm_calls": 4,
+          "cost_cny": 0.030688
+        }
+      },
+      {
+        "id": "C14",
+        "industry": "医疗健康",
+        "scenario": "医美宣传",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 9,
+        "citation_precision": 0.333,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国广告法16条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "医疗广告审查证明",
+          "医疗广告管理办法",
+          "医疗美容服务管理办法",
+          "患者影像资料使用授权书"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.78,
+        "cost_cny": 0.02791,
+        "total_tokens": 7208,
+        "usage": {
+          "prompt_tokens": 4959,
+          "completion_tokens": 2249,
+          "total_tokens": 7208,
+          "llm_calls": 4,
+          "cost_cny": 0.02791
+        }
+      },
+      {
+        "id": "C15",
+        "industry": "化妆品",
+        "scenario": "功效宣称",
+        "core_recall": 0.5,
+        "recall": 0.5,
+        "complete_hit": false,
+        "cited_count": 9,
+        "citation_precision": 0.111,
+        "trusted": false,
+        "hits": [
+          "化妆品监督管理条例22条"
+        ],
+        "missing": [
+          "中华人民共和国广告法9条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 11.65,
+        "cost_cny": 0.023372,
+        "total_tokens": 6547,
+        "usage": {
+          "prompt_tokens": 4834,
+          "completion_tokens": 1713,
+          "total_tokens": 6547,
+          "llm_calls": 4,
+          "cost_cny": 0.023372
+        }
+      },
+      {
+        "id": "C16",
+        "industry": "食品",
+        "scenario": "网络食品平台",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 12,
+        "citation_precision": 0.25,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国电子商务法28条",
+          "中华人民共和国食品安全法62条",
+          "中华人民共和国食品安全法131条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 15.11,
+        "cost_cny": 0.028748,
+        "total_tokens": 7753,
+        "usage": {
+          "prompt_tokens": 5546,
+          "completion_tokens": 2207,
+          "total_tokens": 7753,
+          "llm_calls": 4,
+          "cost_cny": 0.028748
+        }
+      },
+      {
+        "id": "C17",
+        "industry": "游戏",
+        "scenario": "未成年人打赏",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 9,
+        "citation_precision": 0.222,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国未成年人保护法74条",
+          "未成年人网络保护条例44条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "未成年人个人信息处理规则"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 15.29,
+        "cost_cny": 0.02835,
+        "total_tokens": 7602,
+        "usage": {
+          "prompt_tokens": 5411,
+          "completion_tokens": 2191,
+          "total_tokens": 7602,
+          "llm_calls": 4,
+          "cost_cny": 0.02835
+        }
+      },
+      {
+        "id": "C18",
+        "industry": "物业",
+        "scenario": "人脸门禁",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 8,
+        "citation_precision": 0.375,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法28条",
+          "中华人民共和国个人信息保护法29条",
+          "中华人民共和国个人信息保护法55条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "人脸识别技术应用安全管理办法"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": 1,
+        "elapsed": 13.6,
+        "cost_cny": 0.026718,
+        "total_tokens": 7035,
+        "usage": {
+          "prompt_tokens": 4927,
+          "completion_tokens": 2108,
+          "total_tokens": 7035,
+          "llm_calls": 4,
+          "cost_cny": 0.026718
+        }
+      },
+      {
+        "id": "C19",
+        "industry": "出行",
+        "scenario": "行程数据共享",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 17,
+        "citation_precision": 0.176,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法17条",
+          "中华人民共和国个人信息保护法23条",
+          "中华人民共和国个人信息保护法24条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [
+          "网络预约出租汽车经营服务管理暂行办法"
+        ],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.04,
+        "cost_cny": 0.030462,
+        "total_tokens": 8172,
+        "usage": {
+          "prompt_tokens": 5819,
+          "completion_tokens": 2353,
+          "total_tokens": 8172,
+          "llm_calls": 4,
+          "cost_cny": 0.030462
+        }
+      },
+      {
+        "id": "C20",
+        "industry": "游戏",
+        "scenario": "防沉迷实名",
+        "core_recall": 0.5,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 12,
+        "citation_precision": 0.167,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国反电信网络诈骗法21条",
+          "中华人民共和国未成年人保护法74条"
+        ],
+        "missing": [
+          "未成年人网络保护条例31条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 15.64,
+        "cost_cny": 0.032826,
+        "total_tokens": 8445,
+        "usage": {
+          "prompt_tokens": 5789,
+          "completion_tokens": 2656,
+          "total_tokens": 8445,
+          "llm_calls": 4,
+          "cost_cny": 0.032826
+        }
+      },
+      {
+        "id": "C21",
+        "industry": "企业服务",
+        "scenario": "数据分类分级",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 8,
+        "citation_precision": 0.25,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国数据安全法21条",
+          "中华人民共和国数据安全法27条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 13.08,
+        "cost_cny": 0.027522,
+        "total_tokens": 7458,
+        "usage": {
+          "prompt_tokens": 5357,
+          "completion_tokens": 2101,
+          "total_tokens": 7458,
+          "llm_calls": 4,
+          "cost_cny": 0.027522
+        }
+      },
+      {
+        "id": "C22",
+        "industry": "其他",
+        "scenario": "境外执法请求",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 11,
+        "citation_precision": 0.182,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国数据安全法31条",
+          "中华人民共和国数据安全法36条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": 1,
+        "elapsed": 14.69,
+        "cost_cny": 0.029298,
+        "total_tokens": 7473,
+        "usage": {
+          "prompt_tokens": 5081,
+          "completion_tokens": 2392,
+          "total_tokens": 7473,
+          "llm_calls": 4,
+          "cost_cny": 0.029298
+        }
+      },
+      {
+        "id": "C23",
+        "industry": "电商",
+        "scenario": "评价管理",
+        "core_recall": 1.0,
+        "recall": 1.0,
+        "complete_hit": true,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": true,
+        "hits": [
+          "中华人民共和国消费者权益保护法8条",
+          "中华人民共和国电子商务法39条"
+        ],
+        "missing": [],
+        "hallucinated": [],
+        "unknown_laws": [],
+        "keypoint_coverage": 1.0,
+        "high_risk_recall": null,
+        "elapsed": 14.13,
+        "cost_cny": 0.02825,
+        "total_tokens": 7444,
+        "usage": {
+          "prompt_tokens": 5217,
+          "completion_tokens": 2227,
+          "total_tokens": 7444,
+          "llm_calls": 4,
+          "cost_cny": 0.02825
+        }
+      },
+      {
+        "id": "C24",
+        "industry": "企业服务",
+        "scenario": "客服录音训练",
+        "core_recall": 1.0,
+        "recall": 0.667,
+        "complete_hit": false,
+        "cited_count": 10,
+        "citation_precision": 0.2,
+        "trusted": false,
+        "hits": [
+          "中华人民共和国个人信息保护法13条",
+          "中华人民共和国个人信息保护法17条"
+        ],
+        "missing": [
+          "中华人民共和国个人信息保护法6条"
+        ],
+        "hallucinated": [],
+        "unknown_laws": [
+          "通信短信息和语音呼叫服务管理规定"
+        ],
+        "keypoint_coverage": 0.75,
+        "high_risk_recall": null,
+        "elapsed": 14.03,
+        "cost_cny": 0.027368,
+        "total_tokens": 7009,
+        "usage": {
+          "prompt_tokens": 4784,
+          "completion_tokens": 2225,
+          "total_tokens": 7009,
+          "llm_calls": 4,
+          "cost_cny": 0.027368
+        }
+      }
+    ]
+  }
+}

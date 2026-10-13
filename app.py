@@ -12,6 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 from src.agents.orchestrator import multi_agent_review
 from src.rag.vector_store import get_collection_stats
+from src.feedback.store import log_review, log_feedback, stats as feedback_stats
+from src.utils.usage import reset as usage_reset, snapshot as usage_snapshot
 
 st.set_page_config(
     page_title="法审助手 - AI合规审查",
@@ -45,6 +47,19 @@ def main():
                 st.warning(f"法规库加载异常：{stats['error']}")
         except Exception:
             st.warning("数据库状态未知")
+
+        st.divider()
+        st.subheader("🔁 持续学习")
+        try:
+            fs = feedback_stats()
+            st.metric("累计审查", fs["reviews"])
+            if fs["satisfaction"] is not None:
+                st.caption(f"反馈满意度 {round(fs['satisfaction'] * 100)}%（{fs['up']}/{fs['rated']}）"
+                           f" | 已采纳法条 {fs['adopted_articles']} 条")
+            else:
+                st.caption("暂无反馈数据，提交反馈后此处会实时更新")
+        except Exception:
+            st.caption("反馈统计暂不可用")
 
         st.divider()
         st.subheader("📋 预设示例")
@@ -100,6 +115,7 @@ def main():
     if analyze_btn and user_input.strip():
         st.session_state.user_input = user_input.strip()
 
+        usage_reset()
         with st.spinner("多Agent协作中...\n\n🔍 Agent 1/3: 风险分类器正在分析数据类型...\n📚 Agent 2/3: 法规检索器正在匹配法条...\n📝 Agent 3/3: 报告生成器正在撰写报告..."):
             try:
                 result = multi_agent_review(user_input.strip(), verbose=False)
@@ -107,29 +123,63 @@ def main():
                 st.error(f"审查失败: {e}")
                 st.info("请检查 .env 中的 API Key 配置")
                 return
+        usage = usage_snapshot()
+        result["usage"] = usage
+        try:
+            st.session_state.review_id = log_review(user_input.strip(), result, mode="multi_agent")
+        except Exception:
+            st.session_state.review_id = ""
+        st.session_state.report = result["report"]
+        st.session_state.trace = result.get("trace") or []
+        st.session_state.total_elapsed = result.get("total_elapsed")
+        st.session_state.usage = usage
+        st.session_state.articles = [f"{a.get('law_name')} {a.get('article_id')}"
+                                     for a in (result.get("articles") or [])]
 
-        # 显示Agent执行过程
+    # 展示已有结果（含反馈交互，rerun 后不丢失）
+    if st.session_state.get("report"):
         st.divider()
         st.subheader("🤖 多Agent协作过程")
-
         cols = st.columns(3)
         icons = ["🔍", "📚", "📝"]
-        for i, (step, col) in enumerate(zip(result["trace"], cols)):
+        for i, (step, col) in enumerate(zip(st.session_state.get("trace") or [], cols)):
             with col:
                 with st.container(border=True):
-                    st.metric(
-                        label=f"{icons[i]} {step['agent']}",
-                        value=f"{step['elapsed']}秒",
-                    )
+                    st.metric(label=f"{icons[i]} {step['agent']}", value=f"{step['elapsed']}秒")
                     st.caption(step["summary"])
+        _u = st.session_state.get("usage") or {}
+        if st.session_state.get("total_elapsed"):
+            st.caption(f"总耗时: {st.session_state.total_elapsed} 秒"
+                       + (f" · Token: {_u.get('total_tokens')} · 成本约 ¥{_u.get('cost_cny')}"
+                          f" · LLM 调用 {_u.get('llm_calls')} 次" if _u else ""))
 
-        st.caption(f"总耗时: {result['total_elapsed']} 秒")
-
-        # 显示报告
         st.divider()
         st.subheader("📄 合规审查报告")
         with st.container(border=True):
-            st.markdown(result["report"])
+            st.markdown(st.session_state.report)
+
+        # ===== 反馈闭环 =====
+        st.divider()
+        st.subheader("📝 这份报告准确吗？")
+        st.caption("反馈会进入持续学习闭环：不准确的报告会被整理为评测用例，准确的报告会作为判断口径参考")
+        c1, c2 = st.columns([1, 1])
+        with c1:
+            rating = st.radio("评价", ["👍 准确可用", "👎 不准确 / 有遗漏"],
+                              index=None, horizontal=True, label_visibility="collapsed")
+        adopted = st.multiselect("实际采纳了哪些法条", st.session_state.get("articles", []))
+        comment = st.text_area("补充说明（可选）", height=80,
+                               placeholder="具体哪里不对 / 遗漏了哪条法规 / 建议如何改进")
+        if st.button("提交反馈", type="primary"):
+            if not rating:
+                st.warning("请先选择评价")
+            else:
+                try:
+                    log_feedback(st.session_state.get("review_id", ""),
+                                 "up" if rating.startswith("👍") else "down",
+                                 adopted_articles=adopted, comment=comment, source="streamlit")
+                    st.success("✓ 已记录，感谢反馈")
+                except Exception as e:
+                    st.error(f"反馈记录失败: {e}")
 
         # 追问区
         st.divider()

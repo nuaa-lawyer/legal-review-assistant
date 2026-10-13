@@ -12,6 +12,7 @@ Agent 1: 风险分类器 (RiskClassifier)
 import json
 from openai import OpenAI
 from src.utils.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, LLM_MODEL
+from src.utils.usage import record
 
 SYSTEM_PROMPT = """你是一名数据合规分类专家。你的任务是将产品功能描述分解为结构化的合规要素。
 
@@ -86,6 +87,7 @@ class RiskClassifier:
         )
 
         raw = response.choices[0].message.content.strip()
+        record(response)
 
         # 清理可能的 markdown 代码块包裹
         if raw.startswith("```"):

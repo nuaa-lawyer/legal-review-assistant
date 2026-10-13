@@ -16,6 +16,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 from src.rag.generator import generate_report, generate_followup
 from src.rag.vector_store import get_collection_stats
 from src.agents.orchestrator import multi_agent_review
+from src.feedback.store import log_review, log_feedback, stats as feedback_stats
+from src.utils.usage import reset as usage_reset, snapshot as usage_snapshot
 
 # 模式选择: "multi_agent" 或 "single"
 REVIEW_MODE = "multi_agent"
@@ -100,6 +102,18 @@ HTML_PAGE = r"""<!DOCTYPE html>
 
   .error { background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius); padding: 16px; color: var(--red); }
 
+  /* 反馈区 */
+  .feedback-box { margin-top: 24px; padding: 18px; border: 1px dashed #cbd5e1; border-radius: var(--radius); background: #fbfdff; }
+  .feedback-box .q { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+  .fb-btn { padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border); background: #fff;
+    cursor: pointer; font-size: 14px; margin-right: 10px; }
+  .fb-btn.active { border-color: var(--blue); background: #e8f0fe; color: var(--blue); font-weight: 600; }
+  .fb-arts { margin: 12px 0; font-size: 13px; color: var(--sub); line-height: 2; }
+  .fb-arts label { margin-right: 16px; cursor: pointer; }
+  .feedback-box textarea { height: 64px; margin-top: 8px; }
+  .fb-done { color: var(--green); font-size: 13px; margin-top: 10px; }
+  .stat-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--sub); }
+
   /* Markdown-like report styling */
   .report h2 { font-size: 18px; margin: 20px 0 10px; }
   .report h3 { font-size: 16px; margin: 16px 0 8px; }
@@ -128,6 +142,12 @@ HTML_PAGE = r"""<!DOCTYPE html>
       <div class="count" id="articleCount">--</div>
       <div style="color:var(--sub)">条条款已索引</div>
     </div>
+    <div class="status-card" style="background:#f8fafc;border-color:#e2e8f0;">
+      <div style="font-weight:600;">🔁 持续学习</div>
+      <div class="stat-row"><span>累计审查</span><span id="fbReviews">--</span></div>
+      <div class="stat-row"><span>反馈满意度</span><span id="fbSat">--</span></div>
+      <div class="stat-row"><span>已采纳法条</span><span id="fbAdopted">--</span></div>
+    </div>
     <div>
       <div class="section-title">📋 预设示例</div>
       <button class="example-btn" onclick="setExample(0)"><div class="cat">位置隐私</div>社交App允许用户查看附近100米内其他用户实时位置</button>
@@ -153,6 +173,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
     </div>
 
     <div id="reportArea" class="report"></div>
+    <div id="feedbackArea"></div>
     <div id="followupArea" class="followup" style="display:none;">
       <label style="font-weight:600; font-size:14px;">💬 追问修改建议</label>
       <div style="display:flex; gap:10px; margin-top:8px;">
@@ -173,12 +194,27 @@ const examples = [
 ];
 
 let currentInput = "";
+let currentReviewId = "";
+let currentArticles = [];
+let fbRating = "";
 
 async function init() {
   try {
     let r = await fetch("/api/stats");
     let d = await r.json();
     document.getElementById("articleCount").textContent = d.total_articles || "--";
+  } catch(e) {}
+  loadFeedbackStats();
+}
+
+async function loadFeedbackStats() {
+  try {
+    let r = await fetch("/api/feedback_stats");
+    let d = await r.json();
+    document.getElementById("fbReviews").textContent = d.reviews ?? "--";
+    document.getElementById("fbSat").textContent =
+      (d.satisfaction === null || d.satisfaction === undefined) ? "暂无" : Math.round(d.satisfaction*100)+"%";
+    document.getElementById("fbAdopted").textContent = d.adopted_articles ?? "--";
   } catch(e) {}
 }
 
@@ -213,12 +249,20 @@ async function submitReview() {
           html += '<div><strong>'+t.agent+'</strong> <span class="meta">('+t.elapsed+'s)</span>';
           html += '<div style="color:var(--sub);">'+t.summary+'</div></div></div>';
         }
-        html += '<div style="font-size:11px;color:var(--sub);margin-top:6px;">总耗时: '+d.total_elapsed+'s</div>';
+        html += '<div style="font-size:11px;color:var(--sub);margin-top:6px;">总耗时: '+d.total_elapsed+'s';
+        if (d.usage) { html += ' · Token: '+d.usage.total_tokens+' · 成本约 ¥'+d.usage.cost_cny+' · LLM调用: '+d.usage.llm_calls+' 次'; }
+        html += '</div>';
         html += '</div>';
       }
       html += markdownToHtml(d.report);
       area.innerHTML = html;
       document.getElementById("followupArea").style.display = "block";
+
+      currentReviewId = d.review_id || "";
+      currentArticles = d.articles || [];
+      fbRating = "";
+      renderFeedback();
+      loadFeedbackStats();
     }
   } catch(e) {
     area.innerHTML = '<div class="error">请求失败: '+e.message+'</div>';
@@ -249,12 +293,59 @@ async function submitFollowup() {
   }
 }
 
+function renderFeedback() {
+  if (!currentReviewId) return;
+  let arts = currentArticles.map((a, i) =>
+    '<label><input type="checkbox" class="adopt-box" value="'+a.replace(/"/g,"&quot;")+'"> '+a+'</label>').join("");
+  let html = '<div class="feedback-box">';
+  html += '<div class="q">📝 这份报告准确吗？（反馈会进入持续学习闭环，用于优化检索与判断口径）</div>';
+  html += '<div><button class="fb-btn" id="fbUp" onclick="setRating(\'up\')">👍 准确可用</button>';
+  html += '<button class="fb-btn" id="fbDown" onclick="setRating(\'down\')">👎 不准确 / 有遗漏</button></div>';
+  if (arts) html += '<div class="fb-arts"><div style="margin-bottom:4px;">实际采纳了哪些法条：</div>'+arts+'</div>';
+  html += '<textarea id="fbComment" placeholder="可选：具体哪里不对 / 遗漏了哪条法规 / 建议如何改进"></textarea>';
+  html += '<div style="margin-top:10px;"><button class="btn btn-primary" onclick="submitFeedback()">提交反馈</button>';
+  html += '<span id="fbDone" class="fb-done"></span></div></div>';
+  document.getElementById("feedbackArea").innerHTML = html;
+}
+
+function setRating(r) {
+  fbRating = r;
+  document.getElementById("fbUp").className = "fb-btn" + (r==="up" ? " active" : "");
+  document.getElementById("fbDown").className = "fb-btn" + (r==="down" ? " active" : "");
+}
+
+async function submitFeedback() {
+  if (!fbRating) { alert("请先选择 👍 或 👎"); return; }
+  let adopted = Array.from(document.querySelectorAll(".adopt-box:checked")).map(b => b.value);
+  let comment = document.getElementById("fbComment").value.trim();
+  try {
+    let r = await fetch("/api/feedback", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({review_id: currentReviewId, rating: fbRating,
+                            adopted_articles: adopted, comment: comment})
+    });
+    let d = await r.json();
+    if (d.error) { document.getElementById("fbDone").textContent = "提交失败: "+d.error; }
+    else {
+      document.getElementById("fbDone").textContent = "✓ 已记录，感谢反馈（已采纳 "+adopted.length+" 条法条）";
+      loadFeedbackStats();
+    }
+  } catch(e) {
+    document.getElementById("fbDone").textContent = "提交失败: "+e.message;
+  }
+}
+
 function clearAll() {
   document.getElementById("inputText").value = "";
   document.getElementById("reportArea").innerHTML = "";
+  document.getElementById("feedbackArea").innerHTML = "";
   document.getElementById("followupArea").style.display = "none";
   document.getElementById("followupInput").value = "";
   currentInput = "";
+  currentReviewId = "";
+  currentArticles = [];
+  fbRating = "";
 }
 
 // 简易 Markdown → HTML
@@ -340,6 +431,11 @@ class APIHandler(BaseHTTPRequestHandler):
                 self._send_json(stats)
             except Exception as e:
                 self._send_json({"error": str(e)}, 500)
+        elif path == "/api/feedback_stats":
+            try:
+                self._send_json(feedback_stats())
+            except Exception as e:
+                self._send_json({"error": str(e)}, 500)
         else:
             self.send_response(404)
             self.end_headers()
@@ -356,20 +452,32 @@ class APIHandler(BaseHTTPRequestHandler):
 
                 print(f"\n收到审查请求: {user_input[:60]}...")
 
+                usage_reset()
                 if REVIEW_MODE == "multi_agent":
                     result = multi_agent_review(user_input, verbose=True)
                     report = result["report"]
+                    usage = usage_snapshot()
+                    result["usage"] = usage
+                    review_id = log_review(user_input, result, mode="multi_agent")
                     self._send_json({
                         "report": report,
                         "trace": result["trace"],
                         "mode": "multi_agent",
                         "total_elapsed": result["total_elapsed"],
+                        "usage": usage,
+                        "review_id": review_id,
+                        "articles": [f"{a.get('law_name')} {a.get('article_id')}"
+                                     for a in (result.get("articles") or [])],
                     })
                 else:
                     report = generate_report(user_input)
+                    usage = usage_snapshot()
+                    review_id = log_review(user_input, {"report": report}, mode="single")
                     self._send_json({
                         "report": report,
                         "mode": "single",
+                        "usage": usage,
+                        "review_id": review_id,
                     })
 
                 self.review_history = [
@@ -379,6 +487,28 @@ class APIHandler(BaseHTTPRequestHandler):
             except Exception as e:
                 print(f"审查错误: {e}")
                 self._send_json({"error": f"审查失败: {str(e)}"}, 500)
+
+        elif path == "/api/feedback":
+            try:
+                body = self._read_body()
+                review_id = body.get("review_id", "")
+                rating = body.get("rating", "neutral")
+                if not review_id:
+                    self._send_json({"error": "缺少 review_id"}, 400)
+                    return
+                record = log_feedback(
+                    review_id=review_id,
+                    rating=rating,
+                    adopted_articles=body.get("adopted_articles") or [],
+                    comment=body.get("comment", ""),
+                    source="local_web",
+                )
+                print(f"  收到反馈: {rating} ({review_id})")
+                self._send_json({"ok": True, "feedback": record,
+                                 "stats": feedback_stats()})
+            except Exception as e:
+                print(f"反馈记录错误: {e}")
+                self._send_json({"error": str(e)}, 500)
 
         elif path == "/api/followup":
             try:
