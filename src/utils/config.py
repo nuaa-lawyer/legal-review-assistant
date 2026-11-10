@@ -16,7 +16,7 @@ DATA_RAW = os.path.join(BASE_DIR, "data", "raw")         # 原始Word文件
 # ============ LLM配置 ============
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
-LLM_MODEL = "deepseek-chat"             # DeepSeek-V3
+LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-flash")  # DeepSeek-V4.1-Flash（官方现名；旧别名 deepseek-chat 仍兼容路由至此）
 LLM_TEMPERATURE = 0.3                    # 低温度 = 更严谨的法律分析
 
 # ============ Embedding配置 ============

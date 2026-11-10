@@ -5,10 +5,10 @@ Token 用量与成本统计（进程内全局累加器）
 - 量化「精准决策」的成本指标（申报书/评测报告需要真实数据，不能估算）
 - 每次 LLM 调用后调用 record(response) 即可自动累加
 
-计费口径（DeepSeek 官方标准价，2026）：
-- 输入 ¥2 / 百万 token（缓存未命中）
-- 输出 ¥8 / 百万 token
-实际费用因 prompt 缓存命中而更低，此处按标准价上限估算，口径保守。
+计费口径（DeepSeek 官方 deepseek-flash 高峰时段价，2026-11 核）：
+- 输入 ¥2 / 百万 token（缓存未命中，高峰时段；空闲时段 ¥1）
+- 输出 ¥8 / 百万 token（高峰时段；空闲时段 ¥4）
+实际费用因空闲时段半价与缓存命中而更低，此处按高峰标准价上限估算，口径保守。
 """
 import threading
 from contextlib import contextmanager
