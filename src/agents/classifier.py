@@ -10,9 +10,37 @@ Agent 1: 风险分类器 (RiskClassifier)
 这个Agent不检索法条，只做"理解输入"这一件事。
 """
 import json
+import re
 from openai import OpenAI
 from src.utils.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, LLM_MODEL
 from src.utils.usage import record
+
+# 中文 token 密度高，500 会在 industry_regulations 较长时被截断（finish_reason=length），
+# 表现为 JSON 不完整 → 静默降级为「其他行业」，进而检索跑偏。这里放宽上限并做一次补跑。
+CLASSIFY_MAX_TOKENS = 1200
+CLASSIFY_RETRY_MAX_TOKENS = 2000
+
+
+def _strip_code_fence(text: str) -> str:
+    """去掉 ```json ... ``` 包裹，兼容结尾有多余空白的情况。"""
+    t = text.strip()
+    m = re.match(r"^```(?:json|JSON)?\s*(.*?)\s*```$", t, re.S)
+    if m:
+        return m.group(1).strip()
+    if t.startswith("```"):
+        t = t.split("\n", 1)[-1]
+        t = re.sub(r"\s*```\s*$", "", t)
+    return t.strip()
+
+
+def _extract_json_object(text: str) -> str:
+    """截取最外层的 {...}，容忍模型在 JSON 前后附加说明文字。"""
+    t = _strip_code_fence(text)
+    start = t.find("{")
+    end = t.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        return t[start:end + 1]
+    return t
 
 SYSTEM_PROMPT = """你是一名数据合规分类专家。你的任务是将产品功能描述分解为结构化的合规要素。
 
@@ -81,29 +109,20 @@ class RiskClassifier:
             "risk_summary": "实时位置共享涉及敏感个人信息，需严格合规"
         }
         """
-        response = self.client.chat.completions.create(
-            model=LLM_MODEL,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_input},
-            ],
-            temperature=0.1,  # 极低温度，确保分类稳定一致
-            max_tokens=500,
-        )
-
-        raw = response.choices[0].message.content.strip()
+        response = self._call(user_input, CLASSIFY_MAX_TOKENS)
+        raw = (response.choices[0].message.content or "").strip()
         record(response)
 
-        # 清理可能的 markdown 代码块包裹
-        if raw.startswith("```"):
-            raw = raw.split("\n", 1)[-1]
-            if raw.endswith("```"):
-                raw = raw[:-3]
+        # 输出被截断时，直接补跑一次更长上限，避免拿到半截 JSON
+        if response.choices[0].finish_reason == "length":
+            response = self._call(user_input, CLASSIFY_RETRY_MAX_TOKENS)
+            raw = (response.choices[0].message.content or "").strip()
+            record(response)
 
         try:
-            result = json.loads(raw)
+            result = json.loads(_extract_json_object(raw))
         except json.JSONDecodeError:
-            # 容错：如果JSON解析失败，返回默认值
+            # 容错：仍然失败才降级，并把原因写清楚，便于定位
             result = {
                 "industry": "其他",
                 "industry_regulations": [],
@@ -112,7 +131,22 @@ class RiskClassifier:
                 "scenario_tags": [],
                 "risk_areas": [],
                 "initial_risk_level": "medium",
-                "risk_summary": "分类解析异常，使用默认配置",
+                "risk_summary": f"分类解析失败（finish={response.choices[0].finish_reason}），使用默认配置",
             }
 
+        result.setdefault("industry", "其他")
+        result.setdefault("industry_regulations", [])
+        result.setdefault("risk_areas", [])
         return result
+
+    def _call(self, user_input: str, max_tokens: int):
+        """单次分类调用。"""
+        return self.client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_input},
+            ],
+            temperature=0.1,  # 极低温度，确保分类稳定一致
+            max_tokens=max_tokens,
+        )
